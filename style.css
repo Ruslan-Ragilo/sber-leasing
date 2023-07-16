@@ -36,8 +36,6 @@ body {
   font-family: 'SB Sans Display';
   font-weight: normal;
   color: var(--black-text);
-  max-width: 1440px;
-  margin: 0 auto;
 }
 
 * {
@@ -49,6 +47,8 @@ body {
 .container {
   padding: 0 70px;
   color: var(--black-text);
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 /* Header */
@@ -169,80 +169,83 @@ svg {
 }
 
 /* Footer */
-.footer {
+.share {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--bg-gray);
   color: var(--white-text);
-  padding-top: 168px;
+  padding: 168px 10vw 0 10vw;
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
 }
 
-.footer-heading {
+.share-heading {
   font-size: var(--font-size-xl);
   text-align: center;
   padding-bottom: 86px;
 }
 
-.footer-heading__accent {
+.share-heading__accent {
   color: var(--green-text);
 }
 
-.footer-heading__accent::before {
+.share-heading__accent::before {
   content: "\a";
   white-space: pre;
 }
 
-.footer-socials {
+.share-socials {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 168px;
 }
 
-.footer-socials__title {
+.share-socials__title {
   font-size: var(--font-size-l);
   margin-bottom: 42px;
   text-align: center;
 }
 
-.footer-socials__icons {
+.share-socials__icons {
   display: flex;
 }
 
-.footer-socials__icons > a:not(:last-child) {
-  margin-right: 20px;
+.share-socials__icons > a:not(:last-child) {
+  margin-right: 2vw;
 }
 
-.footer-links {
+.share-socials__icons-icon {
+  width: 22vw;
+  max-width: 200px;
+}
+
+.footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--bg-black);
-  align-self: stretch;
-  padding-top: 74px;
-  padding-bottom: 80px;
+  padding: 74px 0;
 }
 
-.footer-links__sber {
+.footer-logo {
   margin-bottom: 49px;
 }
 
-.footer-links__socials {
+.footer-socials {
   display: flex;
   align-items: center;
 }
 
-.footer-links__socials > a:not(:last-child) {
+.footer-socials > a:not(:last-child) {
   margin-right: 16px;
 }
 
 @media screen and (max-width: 1180px) {
   body {
-    max-width: 744px;
-    width: 100%;
+    /*max-width: 744px;*/
+    /*width: 100%;*/
   }
 
   .container {
