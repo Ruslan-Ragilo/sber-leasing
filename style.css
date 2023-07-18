@@ -241,11 +241,12 @@ svg {
 
 @media screen and (max-width: 1180px) {
   body {
-    max-width: 744px;
-    width: 100%;
+    
   }
 
   .container {
+    max-width: 744px;
+    width: 100%;
     padding: 0 20px;
   }
 
