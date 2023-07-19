@@ -322,5 +322,3 @@ dataMap.forEach((city) => {
 	currentCity.addEventListener('mouseenter', (e) => showTooltip(e, city.name));
 	currentCity.addEventListener('mouseleave', hideTooltip);
 });
-
-console.log(123);
