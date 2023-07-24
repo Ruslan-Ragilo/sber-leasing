@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
 import {DRACOLoader} from 'three/examples/jsm/loaders/DRACOLoader.js'
-import {TEXTURES} from "./constants.js";
+import {ImagesInfo} from "./constants.js";
 
 /**
  * Variables
@@ -33,12 +33,12 @@ const scene = new THREE.Scene()
  * Textures
  */
 
-const texturesInfo = TEXTURES.map((name) => {
-    return {name: name, urlMap: name + '.jpg', urlAlpha: name + '_alpha.jpg', map: null, alphaMap: null}
+const imagesWithTexturesInfo = ImagesInfo.map((info) => {
+    return {...info, urlMap: info.name + '.jpg', urlAlpha: info.name + '_alpha.jpg', map: null, alphaMap: null}
 })
 
 const textureLoader = new THREE.TextureLoader();
-texturesInfo.forEach((info)=> {
+imagesWithTexturesInfo.forEach((info)=> {
     info.map = textureLoader.load('/scene/textures/' + info.urlMap, (loadedTexture) => {
         loadedTexture.colorSpace = THREE.SRGBColorSpace
     });
@@ -99,40 +99,9 @@ const generateImage = (textures, position, scale) => {
     scene.add(image)
 }
 
-const findLoadedImageByName = (name) => {
-    const textures = texturesInfo.find((info)=> info.name === name)
-    return {map: textures.map, alphaMap: textures.alphaMap}
-}
-
-generateImage( findLoadedImageByName('img_1_top'), [0.385, 0.5, -18.552], 1.8)
-generateImage( findLoadedImageByName('img_1_bottom'), [0.385, -2.0, -22.06], 1.8)
-generateImage( findLoadedImageByName('img_2'), [0.995, 0.0, -17.535], 0.7)
-generateImage( findLoadedImageByName('img_3'), [-1, 0.0, -16.775], 1.8)
-generateImage( findLoadedImageByName('img_4'), [0.45, 0.0, -13.945], 0.7)
-generateImage( findLoadedImageByName('img_5'), [0.105, -3.0, -16.94], 4.5)
-generateImage( findLoadedImageByName('img_5_top'), [0.033, 2.0, -9.24], 0.14)
-generateImage( findLoadedImageByName('img_6'), [-0.23, 0.5, -9.795], 1.3)
-generateImage( findLoadedImageByName('img_7_bottom'), [-0.095, -1.0, -9.9], 1.2)
-generateImage( findLoadedImageByName('img_7_top'), [-0.095, 1.0, -7.1], 1.2)
-generateImage( findLoadedImageByName('img_8_bottom'), [-0.45, 0, -7.14], 1.2)
-generateImage( findLoadedImageByName('img_8_top'), [0.55, 0, -6.6], 0.8)
-generateImage( findLoadedImageByName('img_9_bottom'), [-0.95, 0, -4.6], 2.2)
-generateImage( findLoadedImageByName('img_9_top'), [1.4, 0, -3.9], 2.5)
-generateImage( findLoadedImageByName('img_10_top'), [-0.4, 0, -2.75], 0.7)
-generateImage( findLoadedImageByName('img_11_top'), [0.21, 1, 0.67], 1.1)
-generateImage( findLoadedImageByName('img_11_bottom'), [-0.57, 0, -1.53], 1.6)
-generateImage( findLoadedImageByName('img_12'), [0.95, 0, 0.9], 2.2)
-generateImage( findLoadedImageByName('img_13'), [-0.95, 0, 3.8], 1.3)
-generateImage( findLoadedImageByName('img_14'), [0.5, 0, 5.3], 1.1)
-generateImage( findLoadedImageByName('img_15_1'), [-0.45, 0, 6.8], 0.55)
-generateImage( findLoadedImageByName('img_15_2'), [-0.34, -1, 6.43], 1.2)
-generateImage( findLoadedImageByName('img_15_2_top'), [-0.34, 1, 9.23], 1.2)
-generateImage( findLoadedImageByName('img_15_3'), [-0.47, 0.2, 8.86], 0.40)
-generateImage( findLoadedImageByName('img_15_4'), [0.07, 0, 8.72], 0.40)
-generateImage( findLoadedImageByName('img_16_bottom'), [-0.14, -2, 7.45], 3.5)
-generateImage( findLoadedImageByName('img_16_top'), [-0.055, 1, 11.75], 0.55)
-generateImage( findLoadedImageByName('img_17'), [-0.34, 1, 15.55], 1.0)
-generateImage( findLoadedImageByName('img_18'), [0.43, 0, 16.8], 1.0)
+imagesWithTexturesInfo.forEach((info) => {
+    generateImage({map: info.map, alphaMap: info.alphaMap}, info.position, info.scale)
+})
 
 
 /**
@@ -248,12 +217,7 @@ const animate = () => {
         // camera.lookAt(-0.1, 0, carScene.position.z)
     }
 
-    // console.log(carInfo)
-
     if (mixer !== null) {
-        // console.log(mixer.time)
-        // mixer.setTime(carAnimation.duration * scrollPosition)
-        // console.log(carAnimation.duration * scrollPosition)
         mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, 3, deltaTime))
 
         if (mixer.time <= 20.25) {
@@ -263,18 +227,10 @@ const animate = () => {
         if (mixer.time > 20.25 && mixer.time <= 43.98) {
             carInfo.cabin.mesh.material.color.set(0x0000ff)
             carInfo.body.mesh.material.color.set(0x0000ff)
-            // car.children.forEach((c) => {
-            //     c.material.color.set(0x0000ff)
-            // })
         }
         if (mixer.time > 43.98) {
-            // console.log(car)
-
             carInfo.cabin.mesh.material.color.set(0xff0000)
             carInfo.body.mesh.material.color.set(0xff0000)
-            // car.children.forEach((c) => {
-            //     c.material.color.set(0x0000ff)
-            // })
         }
     }
 
