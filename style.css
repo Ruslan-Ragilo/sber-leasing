@@ -103,9 +103,9 @@ body {
 }
 
 .title-banner-bottom {
-  font-size: var(--font-size-l);
-  line-height: 1.3em;
-  margin-top: 15px;
+	font-size: var(--font-size-l);
+	line-height: 1.3em;
+	margin-top: 15px;
 }
 
 .circle-text-banner {
@@ -248,6 +248,16 @@ svg {
 
 
 /* Footer */
+.share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--bg-gray);
+  color: var(--white-text);
+  padding: 168px 10vw 0 10vw;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
 
 .footer-wrapper {
   background-color: #f0f0f0;
@@ -260,66 +270,69 @@ svg {
   background-color: var(--bg-gray);
   color: var(--white-text);
   padding-top: 168px;
-  border-top-left-radius: 50px;
-  border-top-right-radius: 50px;
+  /*border-top-left-radius: 50px;*/
+  /*border-top-right-radius: 50px;*/
 }
 
-.footer-heading {
+.share-heading {
   font-size: var(--font-size-xl);
   text-align: center;
   padding-bottom: 86px;
 }
 
-.footer-heading__accent {
+.share-heading__accent {
   color: var(--green-text);
 }
 
-.footer-heading__accent::before {
-  content: '\a';
+.share-heading__accent::before {
+  content: "\a";
   white-space: pre;
 }
 
-.footer-socials {
+.share-socials {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 168px;
 }
 
-.footer-socials__title {
+.share-socials__title {
   font-size: var(--font-size-l);
   margin-bottom: 42px;
   text-align: center;
 }
 
-.footer-socials__icons {
+.share-socials__icons {
   display: flex;
 }
 
-.footer-socials__icons > a:not(:last-child) {
-  margin-right: 20px;
+.share-socials__icons > a:not(:last-child) {
+  margin-right: 2vw;
 }
 
-.footer-links {
+.share-socials__icons-icon {
+  width: 22vw;
+  max-width: 200px;
+}
+
+.footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--bg-black);
-  align-self: stretch;
-  padding-top: 74px;
-  padding-bottom: 80px;
+  padding: 74px 0;
 }
 
-.footer-links__sber {
+.footer-logo {
   margin-bottom: 49px;
 }
 
-.footer-links__socials {
+.footer-socials {
   display: flex;
   align-items: center;
 }
 
-.footer-links__socials > a:not(:last-child) {
+.footer-socials > a:not(:last-child) {
   margin-right: 16px;
 }
 
