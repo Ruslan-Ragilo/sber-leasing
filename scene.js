@@ -14,6 +14,8 @@ let carInfo = {
     body: {mesh: null, defaultColor: null, secondColor: [1,  0, 1]}
 };
 let carAnimation = null;
+const cameraMaxFarLookAtZPosition = -20;
+const cameraMaxNearLookAtZPosition = 18;
 
 /**
  * Canvas
@@ -103,6 +105,25 @@ imagesWithTexturesInfo.forEach((info) => {
     generateImage({map: info.map, alphaMap: info.alphaMap}, info.position, info.scale)
 })
 
+/**
+ * Rails
+ */
+
+const generateRail = (position) => {
+    const rail = new THREE.Mesh(
+        new THREE.PlaneGeometry(0.006, 0.12),
+        new THREE.MeshBasicMaterial({
+            color: new THREE.Color(0x82857f)
+        })
+    )
+    rail.position.set(...position);
+    const euler = new THREE.Euler(-Math.PI * 0.5, 0, -Math.PI * 0.25, 'XYZ');
+    rail.quaternion.setFromEuler(euler);
+    scene.add(rail)
+}
+
+generateRail([0.067, 0.00, -12.075])
+generateRail([0.049, 0.00, -12.1])
 
 /**
  * Light
@@ -123,14 +144,14 @@ const sizes = {
 window.addEventListener('resize', () => {
     sizes.width = document.body.clientWidth
     sizes.height = window.innerHeight
-    const newAspectRatio = sizes.width / sizes.height
-    console.log(newAspectRatio)
-    frustumSize = 3.4 / newAspectRatio
-    if (newAspectRatio < 1) {
+    aspect = sizes.width / sizes.height
+    console.log(aspect)
+    frustumSize = 3.4 / aspect
+    if (aspect < 1) {
         frustumSize *= 0.9
     }
-    camera.left = frustumSize * newAspectRatio / -2
-    camera.right = frustumSize * newAspectRatio / 2
+    camera.left = frustumSize * aspect / -2
+    camera.right = frustumSize * aspect / 2
     camera.top = frustumSize / 2
     camera.bottom = frustumSize / -2
     camera.updateProjectionMatrix()
@@ -142,7 +163,7 @@ window.addEventListener('resize', () => {
  * Camera
  */
 
-const aspect = sizes.width / sizes.height
+let aspect = sizes.width / sizes.height
 let frustumSize = 3.4 / aspect
 if (aspect < 1) {
     frustumSize *= 0.9
@@ -208,9 +229,8 @@ const animate = () => {
     previousTime = elapsedTime
 
     if (carScene !== null) {
-        camera.position.z = Math.min(Math.max(carScene.position.z + 7, -13), 25);
-        // camera.lookAt = Math.min(Math.max(scrollPosition, -15), 15);
-        camera.lookAt(-0.1, 0, Math.min(Math.max(carScene.position.z, -20), 18))
+        camera.position.z = Math.min(Math.max(carScene.position.z + 7, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
+        camera.lookAt(-0.1, 0, Math.min(Math.max(carScene.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition))
         //
         // camera.position.z = carScene.position.z + 7;
         // camera.lookAt(-0.1, 0, carScene.position.z)
