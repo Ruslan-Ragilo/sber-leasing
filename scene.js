@@ -14,8 +14,9 @@ let carInfo = {
     body: {mesh: null, defaultColor: null, secondColor: [1,  0, 1]}
 };
 let carAnimation = null;
-const cameraMaxFarLookAtZPosition = -20;
-const cameraMaxNearLookAtZPosition = 18;
+const imagesList = []
+const cameraMaxFarLookAtZPosition = -19.75;
+const cameraMaxNearLookAtZPosition = 17.75;
 
 /**
  * Canvas
@@ -36,10 +37,11 @@ const scene = new THREE.Scene()
  */
 
 const imagesWithTexturesInfo = ImagesInfo.map((info) => {
-    return {...info, urlMap: info.name + '.jpg', urlAlpha: info.name + '_alpha.jpg', map: null, alphaMap: null}
+    return {...info, urlMap: info.name + '.jpg', urlAlpha: info.name + '_a.jpg', map: null, alphaMap: null}
 })
 
-const textureLoader = new THREE.TextureLoader();
+
+const textureLoader = new THREE.TextureLoader()
 imagesWithTexturesInfo.forEach((info)=> {
     info.map = textureLoader.load('/scene/textures/' + info.urlMap, (loadedTexture) => {
         loadedTexture.colorSpace = THREE.SRGBColorSpace
@@ -69,7 +71,7 @@ gltfLoader.load(
     '/scene/models/car.glb',
     (gltf) => {
         mixer = new THREE.AnimationMixer(gltf.scene)
-        carScene = gltf.scene.children[1]
+        carScene = gltf.scene.children[0]
         carInfo.body.mesh = carScene.children[0]
         carInfo.cabin.mesh = carScene.children[5]
         carInfo.cabin.defaultColor = carInfo.cabin.mesh.material.color.clone()
@@ -93,11 +95,13 @@ const generateImage = (textures, position, scale) => {
         new THREE.MeshBasicMaterial({
             map: textures.map,
             alphaMap: textures.alphaMap,
-            transparent: true
+            transparent: true,
+            opacity: scale === 4.5 ? 0.2 : 1
         })
     )
     image.position.set(...position);
-    image.rotation.x -= Math.PI * 0.21
+    image.rotation.x -= Math.PI * 0.21;
+    imagesList.push(image);
     scene.add(image)
 }
 
@@ -111,9 +115,9 @@ imagesWithTexturesInfo.forEach((info) => {
 
 const generateRail = (position) => {
     const rail = new THREE.Mesh(
-        new THREE.PlaneGeometry(0.006, 0.12),
+        new THREE.PlaneGeometry(0.0065, 0.085),
         new THREE.MeshBasicMaterial({
-            color: new THREE.Color(0x82857f)
+            color: new THREE.Color(0x818f96)
         })
     )
     rail.position.set(...position);
@@ -122,8 +126,8 @@ const generateRail = (position) => {
     scene.add(rail)
 }
 
-generateRail([0.067, 0.00, -12.075])
-generateRail([0.049, 0.00, -12.1])
+generateRail([-0.067, 0.00, -12.213])
+generateRail([-0.043, 0.00, -12.187])
 
 /**
  * Light
@@ -146,7 +150,7 @@ window.addEventListener('resize', () => {
     sizes.height = window.innerHeight
     aspect = sizes.width / sizes.height
     console.log(aspect)
-    frustumSize = 3.4 / aspect
+    frustumSize = 2.4 / aspect
     if (aspect < 1) {
         frustumSize *= 0.9
     }
@@ -164,7 +168,7 @@ window.addEventListener('resize', () => {
  */
 
 let aspect = sizes.width / sizes.height
-let frustumSize = 3.4 / aspect
+let frustumSize = 2.4 / aspect
 if (aspect < 1) {
     frustumSize *= 0.9
 }
@@ -178,7 +182,7 @@ const camera = new THREE.OrthographicCamera(
     0.1,
     20
 );
-camera.position.set(-0.1, 5, 0);
+camera.position.set(-0.05, 5, 0);
 scene.add(camera)
 
 /**
@@ -209,8 +213,7 @@ window.addEventListener('scroll', function () {
     //     (scrollContainer.clientHeight - (sizes.height) / 2) / scrollContainer.clientHeight
     // );
     scrollPosition = -((scrollContainer.getBoundingClientRect().top -( sizes.height / 2) ) / scrollContainer.clientHeight)
-    scrollPosition = Math.min(Math.max(scrollPosition, 0.04), 0.96);
-    console.log(scrollPosition)
+    scrollPosition = Math.min(Math.max(scrollPosition, 0.05), 0.95);
     // console.log(scrollPosition)
 });
 
@@ -230,10 +233,7 @@ const animate = () => {
 
     if (carScene !== null) {
         camera.position.z = Math.min(Math.max(carScene.position.z + 7, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
-        camera.lookAt(-0.1, 0, Math.min(Math.max(carScene.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition))
-        //
-        // camera.position.z = carScene.position.z + 7;
-        // camera.lookAt(-0.1, 0, carScene.position.z)
+        camera.lookAt(-0.05, 0, Math.min(Math.max(carScene.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition))
     }
 
     if (mixer !== null) {
