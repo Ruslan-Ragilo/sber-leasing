@@ -297,6 +297,7 @@ const tooltip = document.getElementById('map-city-tooltip');
 
 const showTooltip = (e, name) => {
 	const cityRect = e.target.getBoundingClientRect();
+	console.log(cityRect);
 	tooltip.classList.add('visible');
 	tooltip.textContent = name;
 
