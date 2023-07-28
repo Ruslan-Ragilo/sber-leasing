@@ -8,15 +8,17 @@ import {ImagesInfo} from "./constants.js";
  */
 
 let mixer = null;
-let carScene = null;
+let carMoving = null;
 let carInfo = {
-    cabin: {mesh: null, defaultColor: null, secondColor: [1,  0, 1]},
-    body: {mesh: null, defaultColor: null, secondColor: [1,  0, 1]}
+    cabin: {mesh: null, firstMaterial: null, secondMaterial: [], thirdMaterial: []},
+    body: {mesh: null, firstMaterial: null, secondMaterial: [], thirdMaterial: []}
 };
 let carAnimation = null;
 const imagesList = []
-const cameraMaxFarLookAtZPosition = -19.75;
-const cameraMaxNearLookAtZPosition = 17.75;
+const cameraMaxFarLookAtZPosition = -19.2;
+const cameraMaxNearLookAtZPosition = 17.7;
+const cameraXPosition = -0.01;
+
 
 /**
  * Canvas
@@ -40,16 +42,33 @@ const imagesWithTexturesInfo = ImagesInfo.map((info) => {
     return {...info, urlMap: info.name + '.jpg', urlAlpha: info.name + '_a.jpg', map: null, alphaMap: null}
 })
 
+// const blockWithTextInfo = BlockWithTextInfo.map((info) => {
+//     return {...info, urlMap: info.name + '.png', map: null}
+// })
+
 
 const textureLoader = new THREE.TextureLoader()
 imagesWithTexturesInfo.forEach((info)=> {
-    info.map = textureLoader.load('/scene/textures/' + info.urlMap, (loadedTexture) => {
+    info.map = textureLoader.load('/scene/textures/images/' + info.urlMap, (loadedTexture) => {
         loadedTexture.colorSpace = THREE.SRGBColorSpace
     });
-    info.alphaMap = textureLoader.load('/scene/textures/' + info.urlAlpha, (loadedTexture) => {
+    info.alphaMap = textureLoader.load('/scene/textures/images/' + info.urlAlpha, (loadedTexture) => {
         loadedTexture.colorSpace = THREE.SRGBColorSpace
     });
 })
+
+// blockWithTextInfo.forEach((info)=> {
+//     info.map = textureLoader.load('/scene/textures/text/' + info.urlMap, (loadedTexture) => {
+//
+//
+//         loadedTexture.magFilter = THREE.NearestFilter
+//
+//         // loadedTexture.minFilter = THREE.LinearFilter
+//         loadedTexture.generateMipmaps = false
+//         loadedTexture.colorSpace = THREE.SRGBColorSpace
+//
+//     });
+// })
 
 /**
  * Models
@@ -60,7 +79,7 @@ const gltfLoader = new GLTFLoader()
 gltfLoader.setDRACOLoader(dracoLoader)
 
 gltfLoader.load(
-    '/scene/models/road.glb',
+    '/scene/models/road_1.glb',
     (gltf) => {
         gltf.scene.position.x -= 0.11
         scene.add(gltf.scene)
@@ -71,15 +90,22 @@ gltfLoader.load(
     '/scene/models/car.glb',
     (gltf) => {
         mixer = new THREE.AnimationMixer(gltf.scene)
-        carScene = gltf.scene.children[0]
-        carInfo.body.mesh = carScene.children[0]
-        carInfo.cabin.mesh = carScene.children[5]
-        carInfo.cabin.defaultColor = carInfo.cabin.mesh.material.color.clone()
-        carInfo.body.defaultColor = carInfo.body.mesh.material.color.clone()
+        carMoving = gltf.scene.children[0]
+        const carSecond = gltf.scene.children[2]
+        const carThird = gltf.scene.children[3]
+        carInfo.body.mesh = carMoving.children[0]
+        carInfo.cabin.mesh = carMoving.children[5]
+        carInfo.body.firstMaterial = carSecond.children[4].material.clone()
+        carInfo.body.secondMaterial = carThird.children[5].material.clone()
+        carInfo.body.thirdMaterial = carMoving.children[0].material.clone()
+        carInfo.cabin.firstMaterial = carSecond.children[0].material.clone()
+        carInfo.cabin.secondMaterial = carThird.children[0].material.clone()
+        carInfo.cabin.thirdMaterial = carMoving.children[5].material.clone()
+        carSecond.position.x = 10
+        carThird.position.x = 10
         carAnimation = gltf.animations[0]
         const action = mixer.clipAction(carAnimation)
         action.play()
-        // console.log(carAnimation.duration * scrollPosition)
         mixer.setTime(carAnimation.duration * scrollPosition)
         gltf.scene.position.x -= 0.11
         scene.add(gltf.scene)
@@ -96,7 +122,7 @@ const generateImage = (textures, position, scale) => {
             map: textures.map,
             alphaMap: textures.alphaMap,
             transparent: true,
-            opacity: scale === 4.5 ? 0.2 : 1
+            opacity: 1
         })
     )
     image.position.set(...position);
@@ -109,15 +135,19 @@ imagesWithTexturesInfo.forEach((info) => {
     generateImage({map: info.map, alphaMap: info.alphaMap}, info.position, info.scale)
 })
 
+// blockWithTextInfo.forEach((info) => {
+//     generateImage({map: info.map, alphaMap: null}, info.position, info.scale)
+// })
+
 /**
  * Rails
  */
 
 const generateRail = (position) => {
     const rail = new THREE.Mesh(
-        new THREE.PlaneGeometry(0.0065, 0.085),
+        new THREE.PlaneGeometry(0.0045, 0.085),
         new THREE.MeshBasicMaterial({
-            color: new THREE.Color(0x818f96)
+            color: new THREE.Color(0x7a888f)
         })
     )
     rail.position.set(...position);
@@ -126,8 +156,8 @@ const generateRail = (position) => {
     scene.add(rail)
 }
 
-generateRail([-0.067, 0.00, -12.213])
-generateRail([-0.043, 0.00, -12.187])
+generateRail([0.094, 0.00, -12.049])
+generateRail([0.115, 0.00, -12.03])
 
 /**
  * Light
@@ -182,7 +212,7 @@ const camera = new THREE.OrthographicCamera(
     0.1,
     20
 );
-camera.position.set(-0.05, 5, 0);
+camera.position.set(cameraXPosition, 5, 0);
 scene.add(camera)
 
 /**
@@ -212,9 +242,9 @@ window.addEventListener('scroll', function () {
     //     (canvas.offsetTop + sizes.height) / scrollContainer.clientHeight,
     //     (scrollContainer.clientHeight - (sizes.height) / 2) / scrollContainer.clientHeight
     // );
-    scrollPosition = -((scrollContainer.getBoundingClientRect().top -( sizes.height / 2) ) / scrollContainer.clientHeight)
-    scrollPosition = Math.min(Math.max(scrollPosition, 0.05), 0.95);
-    // console.log(scrollPosition)
+    scrollPosition = -((scrollContainer.getBoundingClientRect().top ) / (scrollContainer.clientHeight + (sizes.height * 2)))
+    scrollPosition += 0.065
+    scrollPosition = Math.min(Math.max(scrollPosition, 0.065), 0.945);
 });
 
 
@@ -231,25 +261,25 @@ const animate = () => {
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
 
-    if (carScene !== null) {
-        camera.position.z = Math.min(Math.max(carScene.position.z + 7, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
-        camera.lookAt(-0.05, 0, Math.min(Math.max(carScene.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition))
+    if (carMoving !== null) {
+        camera.position.z = Math.min(Math.max(carMoving.position.z + 7, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
+        camera.lookAt(cameraXPosition, 0, Math.min(Math.max(carMoving.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition))
     }
 
     if (mixer !== null) {
         mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, 3, deltaTime))
 
         if (mixer.time <= 20.25) {
-            carInfo.cabin.mesh.material.color.copy(carInfo.cabin.defaultColor)
-            carInfo.body.mesh.material.color.copy(carInfo.body.defaultColor)
+            carInfo.cabin.mesh.material = carInfo.cabin.firstMaterial
+            carInfo.body.mesh.material = carInfo.body.firstMaterial
         }
         if (mixer.time > 20.25 && mixer.time <= 43.98) {
-            carInfo.cabin.mesh.material.color.set(0x0000ff)
-            carInfo.body.mesh.material.color.set(0x0000ff)
+            carInfo.cabin.mesh.material = carInfo.cabin.secondMaterial
+            carInfo.body.mesh.material = carInfo.body.secondMaterial
         }
         if (mixer.time > 43.98) {
-            carInfo.cabin.mesh.material.color.set(0xff0000)
-            carInfo.body.mesh.material.color.set(0xff0000)
+            carInfo.cabin.mesh.material = carInfo.cabin.thirdMaterial
+            carInfo.body.mesh.material = carInfo.body.thirdMaterial
         }
     }
 
