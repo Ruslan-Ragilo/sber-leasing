@@ -14,11 +14,11 @@ let carInfo = {
     body: {mesh: null, firstMaterial: null, secondMaterial: [], thirdMaterial: []}
 };
 let carAnimation = null;
-const imagesList = []
 const cameraMaxFarLookAtZPosition = -19.2;
 const cameraMaxNearLookAtZPosition = 17.7;
 const cameraXPosition = -0.01;
-
+const objectsList = []
+const triggeredObjects = [];
 
 /**
  * Canvas
@@ -107,6 +107,12 @@ gltfLoader.load(
         const action = mixer.clipAction(carAnimation)
         action.play()
         mixer.setTime(carAnimation.duration * scrollPosition)
+        objectsList.forEach((img)=> {
+            if (img.fadeInStartPosition <= carMoving.position.z) {
+                img.mesh.material.opacity = 1;
+                triggeredObjects.push(img)
+            }
+        })
         gltf.scene.position.x -= 0.11
         scene.add(gltf.scene)
     }
@@ -115,24 +121,24 @@ gltfLoader.load(
 /**
  * Images
  */
-const generateImage = (textures, position, scale) => {
+const generateImage = (textures, position, scale, fadeInStartPosition) => {
     const image = new THREE.Mesh(
         new THREE.PlaneGeometry(scale, scale),
         new THREE.MeshBasicMaterial({
             map: textures.map,
             alphaMap: textures.alphaMap,
             transparent: true,
-            opacity: 1
+            opacity: 0
         })
     )
     image.position.set(...position);
     image.rotation.x -= Math.PI * 0.21;
-    imagesList.push(image);
+    objectsList.push({mesh: image, fadeInStartPosition: fadeInStartPosition});
     scene.add(image)
 }
 
 imagesWithTexturesInfo.forEach((info) => {
-    generateImage({map: info.map, alphaMap: info.alphaMap}, info.position, info.scale)
+    generateImage({map: info.map, alphaMap: info.alphaMap}, info.position, info.scale, info.fadeInStartPosition)
 })
 
 // blockWithTextInfo.forEach((info) => {
@@ -147,12 +153,15 @@ const generateRail = (position) => {
     const rail = new THREE.Mesh(
         new THREE.PlaneGeometry(0.0045, 0.085),
         new THREE.MeshBasicMaterial({
-            color: new THREE.Color(0x7a888f)
+            color: new THREE.Color(0x7a888f),
+            opacity: 0,
+            transparent: true
         })
     )
     rail.position.set(...position);
     const euler = new THREE.Euler(-Math.PI * 0.5, 0, -Math.PI * 0.25, 'XYZ');
     rail.quaternion.setFromEuler(euler);
+    objectsList.push({mesh: rail, fadeInStartPosition: -11.8});
     scene.add(rail)
 }
 
@@ -252,6 +261,11 @@ window.addEventListener('scroll', function () {
  * Animation
  */
 
+const calculateDistanceZ = (position1, position2) => {
+    const dz = position1 -position2
+    return Math.abs(dz)
+};
+
 
 const clock = new THREE.Clock()
 let previousTime = 0
@@ -264,11 +278,16 @@ const animate = () => {
     if (carMoving !== null) {
         camera.position.z = Math.min(Math.max(carMoving.position.z + 7, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
         camera.lookAt(cameraXPosition, 0, Math.min(Math.max(carMoving.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition))
-    }
-
-    if (mixer !== null) {
+        objectsList.forEach((obj) => {
+            if (!triggeredObjects.includes(obj)) {
+                const distanceZ = calculateDistanceZ(carMoving.position.z, obj.fadeInStartPosition);
+                if (distanceZ < 1) {
+                    gsap.to(obj.mesh.material, { opacity: 1, duration: 0.8, ease: Power2.easeIn});
+                    triggeredObjects.push(obj);
+                }
+            }
+        });
         mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, 3, deltaTime))
-
         if (mixer.time <= 20.25) {
             carInfo.cabin.mesh.material = carInfo.cabin.firstMaterial
             carInfo.body.mesh.material = carInfo.body.firstMaterial
@@ -282,7 +301,6 @@ const animate = () => {
             carInfo.body.mesh.material = carInfo.body.thirdMaterial
         }
     }
-
     renderer.render(scene, camera)
     window.requestAnimationFrame(animate)
 }
