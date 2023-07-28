@@ -79,7 +79,7 @@ const gltfLoader = new GLTFLoader()
 gltfLoader.setDRACOLoader(dracoLoader)
 
 gltfLoader.load(
-    '/scene/models/road_1.glb',
+    '/scene/models/road.glb',
     (gltf) => {
         gltf.scene.position.x -= 0.11
         scene.add(gltf.scene)
