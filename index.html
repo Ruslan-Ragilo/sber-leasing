@@ -8,13 +8,83 @@
 	</head>
 	<body>
 		<div class="header-wrapper">
+			<div class="popup">
+				<div class="wrapper-popup">
+					<img class="close-popup" src="static/img/svg/btnClose.svg">
+					<div class="wrapper-content">
+						<div class="wrapper-top">
+							<img class="bg-people" src="static/img/popupImg/korotenko/bg.svg" alt="">
+							<div>
+								<img class="avatar" src="static/img/popupImg/korotenko/korotenko.png" alt="">
+								<div>
+									<p class="region">Дальневосточный филиал</p>
+									<p class="city">г. Хабаровск</p>
+									<p class="name">Кротенко Антон Евгеньевич</p>
+									<p class="position">Директор филиала</p>
+								</div>
+							</div>
+							<p class="congr">«Крепкого здоровья, благополучия, достижения самых амбициозных целей!»</p>
+						</div>
+						<div class="wrapper-medium">
+							<div class="item-medium">
+								<p>2012</p>
+								<p>год <br> основания</p>
+							</div>
+							<div class="item-medium">
+								<p>49</p>
+								<p>количество <br> сотрудников</p>
+							</div>
+							<div class="item-medium">
+								<p>50/50</p>
+								<p>доля мужчин <br> и женщин</p>
+							</div>
+							<div class="item-medium">
+								<p>1150</p>
+								<p>количество <br> действующих клиентов</p>
+							</div>
+						</div>
+						<div class="wrapper-bottom">
+							<div class="item-bottom">
+								<p class="procent">19,23%</p>
+								<img src="static/img/svg/avto.svg" alt="">
+								<p>Легковые автомобили</p>
+							</div>
+							<div class="item-bottom">
+								<p class="procent">8,84%</p>
+								<img src="static/img/svg/comerc.svg" alt="">
+								<p>Коммерческий транспорт</p>
+							</div>
+							<div class="item-bottom">
+								<p class="procent">44,42%</p>
+								<img src="static/img/svg/big.svg" alt="">
+								<p>Грузовой транспорт</p>
+							</div>
+							<div class="item-bottom">
+								<p class="procent">22,90%</p>
+								<img src="static/img/svg/spec.svg" alt="">
+								<p>Спецтехника</p>
+							</div>
+							<div class="item-bottom">
+								<p class="procent">2,72%</p>
+								<img src="static/img/svg/bus.svg" alt="">
+								<p>Автобусы</p>
+							</div>
+							<div class="item-bottom">
+								<p class="procent">2,90%</p>
+								<img src="static/img/svg/equipment.svg" alt="">
+								<p>Оборудование</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 			<div class="map-city-tooltip" id="map-city-tooltip"></div>
 			<div class="container">
 				<header class="header">
 					<div class="header-banner">
 						<div class="header-banner__left">
 							<img src="static/img/svg/logo.svg" alt="Logo" />
-							<p class="heading"><span>Юбилей</span><br />СберЛизингу</p>
+							<p class="heading"><span>Юбилей</span> <img src="/static/img/svg/30.svg" alt="30"> <br />СберЛизингу</p>
 							<p class="title-banner-top">
 								Время пролетело незаметно благодаря вам, а со своей стороны
 								обещаем, что будем радовать новыми выгодными предложениями весь
@@ -52,9 +122,10 @@
 					</div>
 				</header>
 			</div>
-			<div class="container">
+			<!-- <div class="container"> -->
 				<div class="header-map">
 					<svg
+						class="map"
 						width="1783"
 						height="1711"
 						viewBox="0 0 1783 1711"
@@ -2316,7 +2387,7 @@
 						</defs>
 					</svg>
 				</div>
-			</div>
+			<!-- </div> -->
 		</div>
     <section class="share">
       <div class="wrapper">
