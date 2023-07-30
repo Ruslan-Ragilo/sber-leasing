@@ -48,6 +48,10 @@ const imagesWithTexturesInfo = ImagesInfo.map((info) => {
 
 
 const textureLoader = new THREE.TextureLoader()
+
+const shadowCarAlpha = textureLoader.load('/scene/textures/images/shadow_car_alpha.jpg',(loadedTexture) => {
+    loadedTexture.colorSpace = THREE.SRGBColorSpace
+});
 imagesWithTexturesInfo.forEach((info)=> {
     info.map = textureLoader.load('/scene/textures/images/' + info.urlMap, (loadedTexture) => {
         loadedTexture.colorSpace = THREE.SRGBColorSpace
@@ -91,6 +95,7 @@ gltfLoader.load(
     (gltf) => {
         mixer = new THREE.AnimationMixer(gltf.scene)
         carMoving = gltf.scene.children[0]
+        carMoving.add(generateShadow())
         const carSecond = gltf.scene.children[2]
         const carThird = gltf.scene.children[3]
         carInfo.body.mesh = carMoving.children[0]
@@ -167,6 +172,27 @@ const generateRail = (position) => {
 
 generateRail([0.094, 0.00, -12.049])
 generateRail([0.115, 0.00, -12.03])
+
+/**
+ * Shadow
+ */
+
+const generateShadow = () => {
+    const shadow = new THREE.Mesh(
+        new THREE.PlaneGeometry(2.7, 4.2),
+        new THREE.MeshBasicMaterial({
+            color: new THREE.Color(0x212020),
+            opacity: 1,
+            alphaMap: shadowCarAlpha,
+            transparent: true
+        })
+    )
+    shadow.position.x -= 1.5;
+    shadow.position.z -= 0.5;
+    shadow.rotation.x -= Math.PI * 0.5;
+
+    return shadow
+}
 
 /**
  * Light
