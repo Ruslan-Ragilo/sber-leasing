@@ -3,6 +3,7 @@ import {DataMap} from "./constants.js";
 const tooltip = document.getElementById('map-city-tooltip');
 
 const showTooltip = (e, name) => {
+    console.log(e.target.getBoundingClientRect());
     const cityRect = e.target.getBoundingClientRect();
     tooltip.classList.add('visible');
     tooltip.textContent = name;
@@ -10,10 +11,7 @@ const showTooltip = (e, name) => {
     const tooltipRect = tooltip.getBoundingClientRect();
     const cityPosition = {
         x:
-            cityRect.x +
-            window.scrollX -
-            tooltipRect.width / 2 +
-            e.target.r.baseVal.value / 2,
+            e.target.getBoundingClientRect().left - (tooltipRect.width / 2),
         y: cityRect.y + window.scrollY - tooltipRect.height - 4
     };
     tooltip.style.left = cityPosition.x + 'px';
