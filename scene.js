@@ -170,8 +170,8 @@ const generateRail = (position) => {
     scene.add(rail)
 }
 
-generateRail([0.094, 0.00, -12.049])
-generateRail([0.115, 0.00, -12.03])
+generateRail([0.12, 0.00, -12.025])
+generateRail([0.14, 0.00, -12.01])
 
 /**
  * Shadow
