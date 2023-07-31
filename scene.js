@@ -287,48 +287,60 @@ window.addEventListener('scroll', function () {
  * Animation
  */
 
-const calculateDistanceZ = (position1, position2) => {
-    const dz = position1 -position2
-    return Math.abs(dz)
-};
-
-
 const clock = new THREE.Clock()
 let previousTime = 0
 
+const calculateDistanceZ = (position1, position2) => {
+    const dz = position1 - position2;
+    return Math.abs(dz);
+};
+
+const animateCarMaterials = () => {
+    const carTime = mixer.time;
+    if (carTime <= 20.25) {
+        carInfo.cabin.mesh.material = carInfo.cabin.firstMaterial;
+        carInfo.body.mesh.material = carInfo.body.firstMaterial;
+    } else if (carTime <= 43.98) {
+        carInfo.cabin.mesh.material = carInfo.cabin.secondMaterial;
+        carInfo.body.mesh.material = carInfo.body.secondMaterial;
+    } else {
+        carInfo.cabin.mesh.material = carInfo.cabin.thirdMaterial;
+        carInfo.body.mesh.material = carInfo.body.thirdMaterial;
+    }
+};
+
+const animateObjects = () => {
+    objectsList.forEach((obj) => {
+        if (!triggeredObjects.includes(obj)) {
+            const distanceZ = calculateDistanceZ(carMoving.position.z, obj.fadeInStartPosition);
+            if (distanceZ < 1) {
+                gsap.to(obj.mesh.material, { opacity: 1, duration: 0.8, ease: Power2.easeIn });
+                triggeredObjects.push(obj);
+            }
+        }
+    });
+};
+
 const animate = () => {
-    const elapsedTime = clock.getElapsedTime()
-    const deltaTime = elapsedTime - previousTime
-    previousTime = elapsedTime
+    const elapsedTime = clock.getElapsedTime();
+    const deltaTime = elapsedTime - previousTime;
+    previousTime = elapsedTime;
 
     if (carMoving !== null) {
-        camera.position.z = Math.min(Math.max(carMoving.position.z + 7, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
-        camera.lookAt(cameraXPosition, 0, Math.min(Math.max(carMoving.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition))
-        objectsList.forEach((obj) => {
-            if (!triggeredObjects.includes(obj)) {
-                const distanceZ = calculateDistanceZ(carMoving.position.z, obj.fadeInStartPosition);
-                if (distanceZ < 1) {
-                    gsap.to(obj.mesh.material, { opacity: 1, duration: 0.8, ease: Power2.easeIn});
-                    triggeredObjects.push(obj);
-                }
-            }
-        });
-        mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, 3, deltaTime))
-        if (mixer.time <= 20.25) {
-            carInfo.cabin.mesh.material = carInfo.cabin.firstMaterial
-            carInfo.body.mesh.material = carInfo.body.firstMaterial
-        }
-        if (mixer.time > 20.25 && mixer.time <= 43.98) {
-            carInfo.cabin.mesh.material = carInfo.cabin.secondMaterial
-            carInfo.body.mesh.material = carInfo.body.secondMaterial
-        }
-        if (mixer.time > 43.98) {
-            carInfo.cabin.mesh.material = carInfo.cabin.thirdMaterial
-            carInfo.body.mesh.material = carInfo.body.thirdMaterial
-        }
-    }
-    renderer.render(scene, camera)
-    window.requestAnimationFrame(animate)
-}
+        const carZPosition = carMoving.position.z + 7;
+        const clampedZPosition = Math.min(Math.max(carZPosition, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
+        const clampedLookAtZPosition = Math.min(Math.max(carMoving.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition);
 
-animate()
+        camera.position.z = clampedZPosition;
+        camera.lookAt(cameraXPosition, 0, clampedLookAtZPosition);
+
+        animateObjects();
+        mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, 3, deltaTime));
+        animateCarMaterials();
+    }
+
+    renderer.render(scene, camera);
+    window.requestAnimationFrame(animate);
+};
+
+animate();
