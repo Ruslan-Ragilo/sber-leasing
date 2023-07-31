@@ -28,5 +28,3 @@ DataMap.forEach((city) => {
     currentCity.addEventListener('mouseleave', hideTooltip);
 });
 
-// chronology blocks for scene generation
-

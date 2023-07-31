@@ -295,8 +295,8 @@ export const DataMap = [
 ];
 
 export const ImagesInfo = [
-    {name: 'i_1_t', position: [0.345, 0.5, -18.215], scale: 1.0, fadeInStartPosition: -20.00},
-    {name: 'i_1_b', position: [0.01, -1.0, -20.58], scale: 1.0, fadeInStartPosition: -20.00},
+    {name: 'i_1_t', position: [0.345, 0.5, -18.215], scale: 1.0, fadeInStartPosition: null},
+    {name: 'i_1_b', position: [0.01, -1.0, -20.58], scale: 1.0, fadeInStartPosition: null},
     {name: 'i_2', position: [0.73, 0.0, -17.535], scale: 0.57, fadeInStartPosition: -17.5},
     {name: 'i_3', position: [-0.76, 0.0, -16.6], scale: 1.4, fadeInStartPosition: -17.1},
     {name: 'i_4', position: [0.3, 0.0, -13.945], scale: 0.6, fadeInStartPosition: -14},

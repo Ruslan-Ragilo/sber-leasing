@@ -507,6 +507,11 @@ svg {
 
 .footer-wrapper {
   background-color: var(--bg-white);
+
+  /* Это бы добавить чтобы тень от main не лезла на футер*/
+
+  /*position: relative;*/
+  /*z-index: 1112;*/
 }
 
 .footer {
@@ -567,6 +572,7 @@ svg {
   align-items: center;
   background-color: var(--bg-black);
   padding: 74px 0;
+
 }
 
 .footer-logo {

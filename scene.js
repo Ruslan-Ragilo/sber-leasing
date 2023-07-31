@@ -139,7 +139,7 @@ gltfLoader.load(
         action.play()
         mixer.setTime(carAnimation.duration * scrollPosition)
         objectsList.forEach((img)=> {
-            if (img.fadeInStartPosition <= carMoving.position.z) {
+            if (img.fadeInStartPosition <= carMoving.position.z || !img.fadeInStartPosition) {
                 img.mesh.material.opacity = 1;
                 triggeredObjects.push(img)
             }
@@ -178,10 +178,6 @@ const generateImage = (textures, position, scale, fadeInStartPosition) => {
 imagesWithTexturesInfo.forEach((info) => {
     generateImage({map: info.map, alphaMap: info.alphaMap}, info.position, info.scale, info.fadeInStartPosition)
 })
-
-// blockWithTextInfo.forEach((info) => {
-//     generateImage({map: info.map, alphaMap: null}, info.position, info.scale)
-// })
 
 /**
  * Rails
@@ -223,7 +219,6 @@ const generateShadow = () => {
     shadow.position.x -= 1.5;
     shadow.position.z -= 0.5;
     shadow.rotation.x -= Math.PI * 0.5;
-
     return shadow
 }
 
@@ -237,10 +232,6 @@ scene.add(ambientLight)
 /**
  * Sizes
  */
-
-// let aspect = sizes.width / sizes.height
-
-
 
 const sizes = {
     width: document.body.clientWidth,
@@ -257,7 +248,6 @@ const checkDeviceOrientation = () => {
     resizeOverlay.style.display = 'none'
 }
 
-
 checkDeviceOrientation()
 
 
@@ -266,11 +256,7 @@ window.addEventListener('resize', () => {
     sizes.height = window.innerHeight
     sizes.aspect = sizes.width / sizes.height
     checkDeviceOrientation()
-    // console.log(aspect)
     frustumSize = 2.4 /  sizes.aspect
-    // if (aspect < 1) {
-    //     frustumSize *= 0.9
-    // }
     camera.left = frustumSize *  sizes.aspect / -2
     camera.right = frustumSize *  sizes.aspect / 2
     camera.top = frustumSize / 2
@@ -333,7 +319,7 @@ const calculateDistanceZ = (position1, position2) => {
     return Math.abs(dz);
 };
 
-const animateCarMaterials = () => {
+const changeCarMaterials = () => {
     const carTime = mixer.time;
     if (carTime <= 20.25) {
         carInfo.cabin.mesh.material = carInfo.cabin.firstMaterial;
@@ -359,20 +345,17 @@ const fadeInObjects = () => {
     });
 };
 
-const animateBlocksWithText = () => {
-    const cameraZPosition = camera.position.z - 7;
-
-    const adjustedSizesHeight = sizes.height *  sizes.aspect;
-
+const BlocksWithTextMovementAndFadeIn = () => {
     for (const block of BlockWithTextInfo) {
-        const screenPosition = block.positionZ;
-        const translateY = ((screenPosition - cameraZPosition) * (adjustedSizesHeight * 0.2446));
+        const screenPosition = new THREE.Vector3(0,0, block.positionZ)
+        screenPosition.project(camera)
+        let translateY = -(screenPosition.y * (sizes.height * 0.5));
+        console.log(translateY)
         block.element.style.top = Math.floor(translateY) + "px";
-
         if (!triggeredBlocksWithText.includes(block)) {
             const distanceZ = calculateDistanceZ(carMoving.position.z, block.positionZ - 0.5);
             if (distanceZ < 1) {
-                gsap.to(block.element, { opacity: 1, duration: 1, ease: Power2.easeIn });
+                gsap.to(block.element, { opacity: 1, duration: 0.8, ease: Power2.easeIn });
                 triggeredBlocksWithText.push(block);
             }
         }
@@ -388,14 +371,12 @@ const animate = () => {
         const carZPosition = carMoving.position.z + 7;
         const clampedZPosition = Math.min(Math.max(carZPosition, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
         const clampedLookAtZPosition = Math.min(Math.max(carMoving.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition);
-
         camera.position.z = clampedZPosition;
         camera.lookAt(cameraXPosition, 0, clampedLookAtZPosition);
-
-        fadeInObjects();
         mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, 3, deltaTime));
-        animateCarMaterials();
-        animateBlocksWithText()
+        fadeInObjects();
+        changeCarMaterials();
+        BlocksWithTextMovementAndFadeIn()
     }
 
     renderer.render(scene, camera);
