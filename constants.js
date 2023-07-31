@@ -295,8 +295,8 @@ export const DataMap = [
 ];
 
 export const ImagesInfo = [
-    {name: 'i_1_t', position: [0.345, 0.5, -18.215], scale: 1.0, fadeInStartPosition: -18.35},
-    {name: 'i_1_b', position: [0.01, -1.0, -20.58], scale: 1.0, fadeInStartPosition: -18.35},
+    {name: 'i_1_t', position: [0.345, 0.5, -18.215], scale: 1.0, fadeInStartPosition: -20.00},
+    {name: 'i_1_b', position: [0.01, -1.0, -20.58], scale: 1.0, fadeInStartPosition: -20.00},
     {name: 'i_2', position: [0.73, 0.0, -17.535], scale: 0.57, fadeInStartPosition: -17.5},
     {name: 'i_3', position: [-0.76, 0.0, -16.6], scale: 1.4, fadeInStartPosition: -17.1},
     {name: 'i_4', position: [0.3, 0.0, -13.945], scale: 0.6, fadeInStartPosition: -14},
@@ -327,23 +327,78 @@ export const ImagesInfo = [
     {name: 'i_18', position: [0.35, 0, 16.8], scale: 0.9, fadeInStartPosition: 17},
 ]
 
-// export const BlockWithTextInfo = [
-//     {name: 't_1_b', position: [0.345, 1.1, -18.215], scale: 0.7},
-//     {name: 't_2', position: [0.01, 1.1, -20.58], scale: 0.7},
-//     {name: 't_3', position: [0.73, 1.1, -17.535], scale: 0.7},
-//     {name: 't_4', position: [-0.76, 1.1, -16.6], scale: 0.7},
-//     {name: 't_5', position: [0.3, 1.1, -13.945], scale: 0.7},
-//     {name: 't_6', position: [0.48, 1.1, -14.2], scale: 0.7},
-//     {name: 't_7', position: [-0.67, 1.1, -13.128], scale: 0.7},
-//     {name: 't_8', position: [-0.062, 1.1, -10.73], scale: 0.7},
-//     {name: 't_9', position: [-0.2, 1.1, -9.795], scale: 0.7},
-//     {name: 't_10', position: [-0.047, 1.1, -9.9], scale: 0.7},
-//     {name: 't_11', position: [-0.047, 1.1, -7.1], scale: 0.7},
-//     {name: 't_12', position: [-0.32, 1.1, -7.15], scale: 0.7},
-//     {name: 't_13', position: [0.40, 1.1, -6.5], scale: 0.7},
-//     {name: 't_14', position: [-0.75, 1.1, -4.52], scale: 0.7},
-//     {name: 't_15', position: [1.05, 1.1, -4.05], scale: 0.7},
-//     {name: 't_16', position: [0.45, 1.1, 11.3], scale: 0.7},
-//     {name: 't_17', position: [-0.5, 1.1, -1.46], scale: 0.7},
-//     {name: 't_18', position: [0.21, 1.1, 0.67], scale: 0.7}
-// ]
+export const BlockWithTextInfo = [
+    {
+        positionZ: -18.6,
+        element: document.querySelector('.webgl-html-text-wrapper_0')
+    },
+    {
+        positionZ: -17.1,
+        element: document.querySelector('.webgl-html-text-wrapper_1')
+    },
+    {
+        positionZ: -15.4,
+        element: document.querySelector('.webgl-html-text-wrapper_2')
+    },
+    {
+        positionZ: -13.6,
+        element: document.querySelector('.webgl-html-text-wrapper_3')
+    },
+    {
+        positionZ: -11.2,
+        element: document.querySelector('.webgl-html-text-wrapper_4')
+    },
+    {
+        positionZ: -8.8,
+        element: document.querySelector('.webgl-html-text-wrapper_5')
+    },
+    {
+        positionZ: -7.1,
+        element: document.querySelector('.webgl-html-text-wrapper_6')
+    },
+    {
+        positionZ: -6.8,
+        element: document.querySelector('.webgl-html-text-wrapper_7')
+    },
+    {
+        positionZ: -5,
+        element: document.querySelector('.webgl-html-text-wrapper_8')
+    },
+    {
+        positionZ: -2.6,
+        element: document.querySelector('.webgl-html-text-wrapper_9')
+    },
+    {
+        positionZ: -1.1,
+        element: document.querySelector('.webgl-html-text-wrapper_10')
+    },
+    {
+        positionZ: 1,
+        element: document.querySelector('.webgl-html-text-wrapper_11')
+    },
+    {
+        positionZ: 4.6,
+        element: document.querySelector('.webgl-html-text-wrapper_12')
+    },
+    {
+        positionZ: 7.1,
+        element: document.querySelector('.webgl-html-text-wrapper_13')
+    },
+    {
+        positionZ: 8.9,
+        element: document.querySelector('.webgl-html-text-wrapper_14')
+    },
+    {
+        positionZ: 10.4,
+        element: document.querySelector('.webgl-html-text-wrapper_15')
+    },
+    {
+        positionZ: 14.5,
+        element: document.querySelector('.webgl-html-text-wrapper_16')
+    },
+    {
+        positionZ: 16.5,
+        element: document.querySelector('.webgl-html-text-wrapper_17')
+    }
+]
+
