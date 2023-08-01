@@ -1,7 +1,8 @@
 import * as THREE from 'three'
 import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js'
 import {DRACOLoader} from 'three/examples/jsm/loaders/DRACOLoader.js'
-import {ImagesInfo} from "./constants.js";
+import {ImagesInfo, BlockWithTextInfo} from "./constants.js";
+import {log} from "three/nodes";
 
 /**
  * Variables
@@ -19,6 +20,7 @@ const cameraMaxNearLookAtZPosition = 17.7;
 const cameraXPosition = -0.01;
 const objectsList = []
 const triggeredObjects = [];
+const triggeredBlocksWithText = [];
 
 /**
  * Canvas
@@ -35,6 +37,33 @@ const scene = new THREE.Scene()
 
 
 /**
+ * Loaders
+ */
+
+const loadingOverlay = document.querySelector('.loading-overlay')
+
+
+const loadingManager = new THREE.LoadingManager(
+    // Loaded
+    () =>
+    {
+        loadingOverlay.style.display = 'none'
+    },
+
+    // Progress
+    (itemUrl, itemsLoaded, itemsTotal) =>
+    {
+        const progressRatio = itemsLoaded / itemsTotal
+        loadingOverlay.textContent = 'Загрузка ' + Math.floor(progressRatio * 100) + '%'
+    }
+)
+const textureLoader = new THREE.TextureLoader(loadingManager)
+const dracoLoader = new DRACOLoader(loadingManager)
+const gltfLoader = new GLTFLoader(loadingManager)
+gltfLoader.setDRACOLoader(dracoLoader)
+
+
+/**
  * Textures
  */
 
@@ -47,7 +76,6 @@ const imagesWithTexturesInfo = ImagesInfo.map((info) => {
 // })
 
 
-const textureLoader = new THREE.TextureLoader()
 
 const shadowCarAlpha = textureLoader.load('/scene/textures/images/shadow_car_alpha.jpg',(loadedTexture) => {
     loadedTexture.colorSpace = THREE.SRGBColorSpace
@@ -78,9 +106,7 @@ imagesWithTexturesInfo.forEach((info)=> {
  * Models
  */
 
-const dracoLoader = new DRACOLoader()
-const gltfLoader = new GLTFLoader()
-gltfLoader.setDRACOLoader(dracoLoader)
+
 
 gltfLoader.load(
     '/scene/models/road.glb',
@@ -113,11 +139,18 @@ gltfLoader.load(
         action.play()
         mixer.setTime(carAnimation.duration * scrollPosition)
         objectsList.forEach((img)=> {
-            if (img.fadeInStartPosition <= carMoving.position.z) {
+            if (img.fadeInStartPosition <= carMoving.position.z || !img.fadeInStartPosition) {
                 img.mesh.material.opacity = 1;
                 triggeredObjects.push(img)
             }
         })
+        BlockWithTextInfo.forEach((block)=> {
+            if (block.positionZ <= carMoving.position.z) {
+                block.element.style.opacity = 1
+                triggeredBlocksWithText.push(block)
+            }
+        })
+
         gltf.scene.position.x -= 0.11
         scene.add(gltf.scene)
     }
@@ -145,10 +178,6 @@ const generateImage = (textures, position, scale, fadeInStartPosition) => {
 imagesWithTexturesInfo.forEach((info) => {
     generateImage({map: info.map, alphaMap: info.alphaMap}, info.position, info.scale, info.fadeInStartPosition)
 })
-
-// blockWithTextInfo.forEach((info) => {
-//     generateImage({map: info.map, alphaMap: null}, info.position, info.scale)
-// })
 
 /**
  * Rails
@@ -190,7 +219,6 @@ const generateShadow = () => {
     shadow.position.x -= 1.5;
     shadow.position.z -= 0.5;
     shadow.rotation.x -= Math.PI * 0.5;
-
     return shadow
 }
 
@@ -207,20 +235,30 @@ scene.add(ambientLight)
 
 const sizes = {
     width: document.body.clientWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
+    aspect: document.body.clientWidth / window.innerHeight
 }
+
+const checkDeviceOrientation = () => {
+    const resizeOverlay = document.querySelector('div.resize-overlay')
+    if (sizes.aspect < 1 && sizes.width < 768) {
+        resizeOverlay.style.display = 'flex'
+        return
+    }
+    resizeOverlay.style.display = 'none'
+}
+
+checkDeviceOrientation()
+
 
 window.addEventListener('resize', () => {
     sizes.width = document.body.clientWidth
     sizes.height = window.innerHeight
-    aspect = sizes.width / sizes.height
-    console.log(aspect)
-    frustumSize = 2.4 / aspect
-    if (aspect < 1) {
-        frustumSize *= 0.9
-    }
-    camera.left = frustumSize * aspect / -2
-    camera.right = frustumSize * aspect / 2
+    sizes.aspect = sizes.width / sizes.height
+    checkDeviceOrientation()
+    frustumSize = 2.4 /  sizes.aspect
+    camera.left = frustumSize *  sizes.aspect / -2
+    camera.right = frustumSize *  sizes.aspect / 2
     camera.top = frustumSize / 2
     camera.bottom = frustumSize / -2
     camera.updateProjectionMatrix()
@@ -232,16 +270,10 @@ window.addEventListener('resize', () => {
  * Camera
  */
 
-let aspect = sizes.width / sizes.height
-let frustumSize = 2.4 / aspect
-if (aspect < 1) {
-    frustumSize *= 0.9
-}
-
-console.log(aspect)
+let frustumSize = 2.4 /  sizes.aspect
 const camera = new THREE.OrthographicCamera(
-    frustumSize * aspect / -2,
-    frustumSize * aspect / 2,
+    frustumSize *  sizes.aspect / -2,
+    frustumSize *  sizes.aspect / 2,
     frustumSize / 2,
     frustumSize / -2,
     0.1,
@@ -253,6 +285,7 @@ scene.add(camera)
 /**
  * Renderer
  */
+
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas,
     antialias: true,
@@ -269,19 +302,10 @@ const scrollContainer = document.querySelector('div.canvas-wrapper')
 let scrollPosition = (canvas.offsetTop) / scrollContainer.clientHeight;
 
 window.addEventListener('scroll', function () {
-
-    // console.log(canvas.offsetTop)
-    // console.dir(-(scrollContainer.getBoundingClientRect().top / scrollContainer.clientHeight))
-    // console.log((canvas.offsetTop) / scrollContainer.clientHeight)
-    // scrollPosition = Math.min(
-    //     (canvas.offsetTop + sizes.height) / scrollContainer.clientHeight,
-    //     (scrollContainer.clientHeight - (sizes.height) / 2) / scrollContainer.clientHeight
-    // );
     scrollPosition = -((scrollContainer.getBoundingClientRect().top ) / (scrollContainer.clientHeight + (sizes.height * 2)))
     scrollPosition += 0.065
     scrollPosition = Math.min(Math.max(scrollPosition, 0.065), 0.945);
 });
-
 
 /**
  * Animation
@@ -295,7 +319,7 @@ const calculateDistanceZ = (position1, position2) => {
     return Math.abs(dz);
 };
 
-const animateCarMaterials = () => {
+const changeCarMaterials = () => {
     const carTime = mixer.time;
     if (carTime <= 20.25) {
         carInfo.cabin.mesh.material = carInfo.cabin.firstMaterial;
@@ -309,7 +333,7 @@ const animateCarMaterials = () => {
     }
 };
 
-const animateObjects = () => {
+const fadeInObjects = () => {
     objectsList.forEach((obj) => {
         if (!triggeredObjects.includes(obj)) {
             const distanceZ = calculateDistanceZ(carMoving.position.z, obj.fadeInStartPosition);
@@ -321,6 +345,23 @@ const animateObjects = () => {
     });
 };
 
+const BlocksWithTextMovementAndFadeIn = () => {
+    for (const block of BlockWithTextInfo) {
+        const screenPosition = new THREE.Vector3(0,0, block.positionZ)
+        screenPosition.project(camera)
+        let translateY = -(screenPosition.y * (sizes.height * 0.5));
+        console.log(translateY)
+        block.element.style.top = Math.floor(translateY) + "px";
+        if (!triggeredBlocksWithText.includes(block)) {
+            const distanceZ = calculateDistanceZ(carMoving.position.z, block.positionZ - 0.5);
+            if (distanceZ < 1) {
+                gsap.to(block.element, { opacity: 1, duration: 0.8, ease: Power2.easeIn });
+                triggeredBlocksWithText.push(block);
+            }
+        }
+    }
+};
+
 const animate = () => {
     const elapsedTime = clock.getElapsedTime();
     const deltaTime = elapsedTime - previousTime;
@@ -330,13 +371,12 @@ const animate = () => {
         const carZPosition = carMoving.position.z + 7;
         const clampedZPosition = Math.min(Math.max(carZPosition, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
         const clampedLookAtZPosition = Math.min(Math.max(carMoving.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition);
-
         camera.position.z = clampedZPosition;
         camera.lookAt(cameraXPosition, 0, clampedLookAtZPosition);
-
-        animateObjects();
         mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, 3, deltaTime));
-        animateCarMaterials();
+        fadeInObjects();
+        changeCarMaterials();
+        BlocksWithTextMovementAndFadeIn()
     }
 
     renderer.render(scene, camera);

@@ -27,6 +27,7 @@ DataMap.forEach((city) => {
     currentCity.addEventListener('mouseleave', hideTooltip);
 });
 
+<<<<<<< HEAD
 const wrapperMain = document.querySelector('.wrapper-main');
 const mobSection = document.querySelector('.mob-section');
 
@@ -55,3 +56,5 @@ window.addEventListener("DOMContentLoaded", function() {
     
 });
 
+=======
+>>>>>>> refs/remotes/origin/3D_road
