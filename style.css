@@ -77,6 +77,54 @@
   background-color: #62A34B;
 }
 
+
+.mob-section {
+  flex-direction: column;
+  justify-content: space-between;
+  /* max-width: 700px; */
+  width: 100%;
+  margin: 0 auto;
+  align-items: center;
+  padding: 35px 0 0 0;
+  position: fixed;
+  height: 100vh;
+  min-width: 100vw;
+  background-color: white;
+  z-index: 11111;
+  display: none;
+}
+
+
+.mob-section img {
+  /* max-width: 300px; */
+  width: 100%;
+}
+
+.mob-section img:first-child {
+  /* max-width: 300px; */
+  max-width: 300px;
+}
+
+.mob-section > svg {
+  max-width: 100px;
+  margin-top: 10px;
+}
+
+.mob-section > .heading > img {
+  max-width: 100px;
+}
+
+.mob-section > .heading {
+  margin-top: 50px;
+  font-size: 35px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.mob-section > .heading > span {
+  font-weight: 300;
+}
+
 .popup {
   position: fixed;
   top: 0;
@@ -295,10 +343,10 @@ textPath {
   font-weight: 600;
 }
 
-svg {
+.circle-text-banner {
   fill: currentColor;
   height: auto;
-  max-width: 66vmin;
+  max-width: 20pc;
   transform-origin: center;
   width: 66%;
 }
@@ -322,6 +370,7 @@ svg {
 
 .header-map {
   max-width: 1600px;
+  height: auto;
   margin: 20px auto -5px;
 }
 
@@ -605,6 +654,23 @@ svg {
   }
 }
 
+@media screen and (max-width: 1410px) {
+  .header-map {
+    overflow-x: scroll;
+  }
+
+  .header-map::-webkit-scrollbar { width: 0; height: 0; }
+
+  /* ie 10+ */
+  .header-map { -ms-overflow-style: none; }
+
+  /* фф (свойство больше не работает, других способов тоже нет)*/
+  .header-map { overflow: -moz-scrollbars-none; }
+
+}
+
+
+
 
 
 @media screen and (max-width: 1180px) {
@@ -651,10 +717,6 @@ svg {
     min-width: 150px;
     position: relative;
     top: 80px;
-  }
-
-  .header-map {
-    overflow-x: scroll;
   }
 
   .header-map > svg {
