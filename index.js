@@ -28,31 +28,30 @@ DataMap.forEach((city) => {
 });
 
 
-const wrapperMain = document.querySelector('.wrapper-main');
-const mobSection = document.querySelector('.mob-section');
+// const wrapperMain = document.querySelector('.wrapper-main');
+// const mobSection = document.querySelector('.mob-section');
 
 // Прослушка события смены ориентации
-window.addEventListener("orientationchange", function(e) {
-    wrapperMain.style.display = 'none'
-    this.setTimeout(() => {
-        if (this.window.innerWidth <= 780 && screen.orientation.type === 'portrait-primary') {
-            this.document.body.style.overflow = 'hidden'
-            mobSection.style.display = 'flex'
-        } else {
-            this.document.body.style.overflow = 'scroll'
-            wrapperMain.style.display = 'block'
-            mobSection.style.display = 'none'
-        }
-    },40)
-    
-});
-window.addEventListener("DOMContentLoaded", function() {
-    console.log(wrapperMain);
-    if (this.window.innerWidth <= 780 && screen.orientation.type === 'portrait-primary') {
-        this.document.body.style.overflow = 'hidden'
-        wrapperMain.style.display = 'none'
-        mobSection.style.display = 'flex'
-    }
-    
-});
+// window.addEventListener("orientationchange", function(e) {
+//     wrapperMain.style.display = 'none'
+//     this.setTimeout(() => {
+//         if (this.window.innerWidth <= 780 && screen.orientation.type === 'portrait-primary') {
+//             this.document.body.style.overflow = 'hidden'
+//             mobSection.style.display = 'flex'
+//         } else {
+//             this.document.body.style.overflow = 'scroll'
+//             wrapperMain.style.display = 'block'
+//             mobSection.style.display = 'none'
+//         }
+//     },40)
+//
+// });
+// window.addEventListener("DOMContentLoaded", function() {
+//     console.log(wrapperMain);
+//     if (this.window.innerWidth <= 780 && screen.orientation.type === 'portrait-primary') {
+//         this.document.body.style.overflow = 'hidden'
+//         // wrapperMain.style.display = 'none'
+//         mobSection.style.display = 'flex'
+//     }
+// });
 

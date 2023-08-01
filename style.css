@@ -81,16 +81,15 @@
 .mob-section {
   flex-direction: column;
   justify-content: space-between;
-  /* max-width: 700px; */
   width: 100%;
   margin: 0 auto;
   align-items: center;
   padding: 35px 0 0 0;
   position: fixed;
-  height: 100vh;
-  min-width: 100vw;
+  top: 0;
+  bottom: 0;
   background-color: white;
-  z-index: 11111;
+  z-index: 3;
   display: none;
 }
 
@@ -468,32 +467,71 @@ textPath {
 }
 
 .loading-overlay {
-  position: sticky;
-  height: 100vh;
+  position: fixed;
   top: 0;
   bottom: 0;
-  background-color: var(--bg-white);
-  z-index: 4;
+  background-color: white;
+  z-index: 5;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-.resize-overlay {
-  position: sticky;
-  height: 100vh;
-  display: none;
-  top: 0;
-  bottom: 0;
-  background-color: var(--bg-white);
-  z-index: 3;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.loading-top {
+  display: flex;
+  margin-bottom: 43px;
+  min-height: 250px;
 }
+
+.loading-spinner {
+  border-radius: 50%;
+  width: 214px;
+  height: 214px;
+  background: linear-gradient(142deg, #23b76b 0%, #025bb4 100%);
+
+  position: relative;
+}
+
+.loading-spinner-inner {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background: white;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-spinner-progress {
+  border-radius: 50%;
+  width: 216px;
+  height: 216px;
+  position: absolute;
+  background: conic-gradient(from 4rad, #00000000 6deg, white 0deg);
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/*.resize-overlay {*/
+/*  position: sticky;*/
+/*  height: 100vh;*/
+/*  display: none;*/
+/*  top: 0;*/
+/*  bottom: 0;*/
+/*  background-color: var(--bg-white);*/
+/*  z-index: 3;*/
+/*  width: 100%;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  text-align: center;*/
+/*}*/
 
 .webgl-html {
   --top-offset: 0;
@@ -636,7 +674,7 @@ textPath {
 @media screen and (max-width: 1439px) {
 
   .webgl-html-text-wrapper {
-    max-width: 330px;
+    max-width: 340px;
   }
 
   .webgl-html-text {

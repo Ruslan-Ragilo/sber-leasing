@@ -11,8 +11,8 @@ import {log} from "three/nodes";
 let mixer = null;
 let carMoving = null;
 let carInfo = {
-    cabin: {mesh: null, firstMaterial: null, secondMaterial: [], thirdMaterial: []},
-    body: {mesh: null, firstMaterial: null, secondMaterial: [], thirdMaterial: []}
+    cabin: {mesh: null, firstMaterial: null, secondMaterial: null, thirdMaterial: null},
+    body: {mesh: null, firstMaterial: null, secondMaterial: null, thirdMaterial: null}
 };
 let carAnimation = null;
 const cameraMaxFarLookAtZPosition = -19.2;
@@ -33,14 +33,13 @@ const canvas = document.querySelector('canvas.webgl')
  */
 
 const scene = new THREE.Scene()
-// scene.background = new THREE.Color(0xf0f0f0);
-
 
 /**
  * Loaders
  */
 
 const loadingOverlay = document.querySelector('.loading-overlay')
+const loadingProgress = document.querySelector('.loading-spinner-progress')
 
 
 const loadingManager = new THREE.LoadingManager(
@@ -54,7 +53,7 @@ const loadingManager = new THREE.LoadingManager(
     (itemUrl, itemsLoaded, itemsTotal) =>
     {
         const progressRatio = itemsLoaded / itemsTotal
-        loadingOverlay.textContent = 'Загрузка ' + Math.floor(progressRatio * 100) + '%'
+        loadingProgress.style.background = `conic-gradient(from 4rad, #00000000 ${Math.floor(progressRatio * 360)}deg, white 0deg)`
     }
 )
 const textureLoader = new THREE.TextureLoader(loadingManager)
@@ -71,12 +70,6 @@ const imagesWithTexturesInfo = ImagesInfo.map((info) => {
     return {...info, urlMap: info.name + '.jpg', urlAlpha: info.name + '_a.jpg', map: null, alphaMap: null}
 })
 
-// const blockWithTextInfo = BlockWithTextInfo.map((info) => {
-//     return {...info, urlMap: info.name + '.png', map: null}
-// })
-
-
-
 const shadowCarAlpha = textureLoader.load('/scene/textures/images/shadow_car_alpha.jpg',(loadedTexture) => {
     loadedTexture.colorSpace = THREE.SRGBColorSpace
 });
@@ -89,24 +82,10 @@ imagesWithTexturesInfo.forEach((info)=> {
     });
 })
 
-// blockWithTextInfo.forEach((info)=> {
-//     info.map = textureLoader.load('/scene/textures/text/' + info.urlMap, (loadedTexture) => {
-//
-//
-//         loadedTexture.magFilter = THREE.NearestFilter
-//
-//         // loadedTexture.minFilter = THREE.LinearFilter
-//         loadedTexture.generateMipmaps = false
-//         loadedTexture.colorSpace = THREE.SRGBColorSpace
-//
-//     });
-// })
 
 /**
  * Models
  */
-
-
 
 gltfLoader.load(
     '/scene/models/road.glb',
@@ -240,8 +219,8 @@ const sizes = {
 }
 
 const checkDeviceOrientation = () => {
-    const resizeOverlay = document.querySelector('div.resize-overlay')
-    if (sizes.aspect < 1 && sizes.width < 768) {
+    const resizeOverlay = document.querySelector('.mob-section');
+    if (sizes.aspect < 1 && sizes.width < 780) {
         resizeOverlay.style.display = 'flex'
         return
     }
@@ -350,10 +329,7 @@ const BlocksWithTextMovementAndFadeIn = () => {
     for (const block of BlockWithTextInfo) {
         const screenPosition = (camera.position.z - 7) - block.positionZ
         let translateY = -(screenPosition * (sizes.height * 0.5));
-        // console.log( translateY * Math.abs(camera.zoom - 1))
-        // + translateY * Math.abs(camera.zoom - 1)
         block.element.style.top = (translateY * camera.zoom + sizes.height * 0.5 * Math.abs(camera.zoom - 1) ) + "px";
-
         if (!triggeredBlocksWithText.includes(block)) {
             const distanceZ = calculateDistanceZ(carMoving.position.z, block.positionZ - 0.5);
             if (distanceZ < 1) {
