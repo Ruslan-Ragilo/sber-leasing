@@ -208,6 +208,9 @@ const generateShadow = () => {
 const ambientLight = new THREE.AmbientLight(0xffffff, 1)
 scene.add(ambientLight)
 
+
+
+
 /**
  * Sizes
  */
@@ -222,9 +225,11 @@ const checkDeviceOrientation = () => {
     const resizeOverlay = document.querySelector('.mob-section');
     if (sizes.aspect < 1 && sizes.width < 780) {
         resizeOverlay.style.display = 'flex'
+        document.body.style.overflowY = 'hidden'
         return
     }
     resizeOverlay.style.display = 'none'
+    document.body.style.overflowY = 'scroll'
 }
 
 checkDeviceOrientation()
