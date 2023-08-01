@@ -325,6 +325,8 @@ export const ImagesInfo = [
     {name: 'i_16', position: [-0.08, -2, 7.74], scale: 2.6, fadeInStartPosition: 10},
     {name: 'i_17', position: [-0.37, 1, 15.55], scale: 1.1, fadeInStartPosition: 14},
     {name: 'i_18', position: [0.35, 0, 16.8], scale: 0.9, fadeInStartPosition: 17},
+    {name: 'salut', position: [0.7, 1, 18.6], scale: 0.9, fadeInStartPosition: 18},
+
 ]
 
 export const BlockWithTextInfo = [

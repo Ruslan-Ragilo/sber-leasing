@@ -337,7 +337,7 @@ const BlocksWithTextMovementAndFadeIn = () => {
         block.element.style.top = (translateY * camera.zoom + sizes.height * 0.5 * Math.abs(camera.zoom - 1) ) + "px";
         if (!triggeredBlocksWithText.includes(block)) {
             const distanceZ = calculateDistanceZ(carMoving.position.z, block.positionZ - 0.5);
-            if (distanceZ < 1) {
+            if (distanceZ < 1.3) {
                 gsap.to(block.element, { opacity: 1, duration: 0.8, ease: Power2.easeIn });
                 triggeredBlocksWithText.push(block);
             }
