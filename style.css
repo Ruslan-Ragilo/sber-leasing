@@ -378,8 +378,6 @@ svg {
   /*background-color: white;*/
   background-color: var(--bg-white);
   box-shadow: 0 0 125px 0 #00000073;
-  position: relative;
-  z-index: 1111;
 }
 
 .main-description {
@@ -451,8 +449,6 @@ svg {
 .webgl-html {
   --top-offset: 0;
   height: 100vh;
-  /*width: 100%;*/
-  /*background-color: #00ac7b;*/
   position: sticky;
   top: 0;
   bottom: 0;
@@ -468,9 +464,9 @@ svg {
   border-radius: 20px;
   padding: 2px;
   opacity: 0;
+  transform: translateY(-50%);
   background: linear-gradient(to bottom right, #00AC7B, #078BE3);
 }
-
 
 .webgl-html-text {
   background-color: var(--bg-white);
@@ -489,7 +485,6 @@ svg {
   padding: 0 0 10px;
   font-size: var(--font-size-s);
   font-weight: 300;
-
 }
 
 
@@ -588,6 +583,30 @@ svg {
   margin-right: 16px;
 }
 
+
+@media screen and (max-width: 1439px) {
+
+  .webgl-html-text-wrapper {
+    max-width: 330px;
+  }
+
+  .webgl-html-text {
+    padding: 15px;
+  }
+
+  .webgl-html-text h3 {
+    padding: 0 0 12px;
+    font-size: 28px;
+  }
+
+  .webgl-html-text p {
+    padding: 0 0 8px;
+    font-size: 12px;
+  }
+}
+
+
+
 @media screen and (max-width: 1180px) {
   body {
   }
@@ -643,6 +662,26 @@ svg {
     position: relative;
     left: -50px;
   }
+
+
+  .webgl-html-text-wrapper {
+    max-width: 330px;
+  }
+
+  .webgl-html-text {
+    padding: 12px;
+  }
+
+  .webgl-html-text h3 {
+    padding: 0 0 10px;
+    font-size: 24px;
+  }
+
+  .webgl-html-text p {
+    padding: 0 0 8px;
+    font-size: 10px;
+  }
+
 }
 
 @media screen and (max-width: 768px) {

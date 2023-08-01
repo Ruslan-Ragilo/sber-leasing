@@ -329,75 +329,75 @@ export const ImagesInfo = [
 
 export const BlockWithTextInfo = [
     {
-        positionZ: -18.6,
+        positionZ: -18.3,
         element: document.querySelector('.webgl-html-text-wrapper_0')
     },
     {
-        positionZ: -17.1,
+        positionZ: -16.8,
         element: document.querySelector('.webgl-html-text-wrapper_1')
     },
     {
-        positionZ: -15.4,
+        positionZ: -15.3,
         element: document.querySelector('.webgl-html-text-wrapper_2')
     },
     {
-        positionZ: -13.6,
+        positionZ: -13.3,
         element: document.querySelector('.webgl-html-text-wrapper_3')
     },
     {
-        positionZ: -11.2,
+        positionZ: -10.9,
         element: document.querySelector('.webgl-html-text-wrapper_4')
     },
     {
-        positionZ: -8.8,
+        positionZ: -8.5,
         element: document.querySelector('.webgl-html-text-wrapper_5')
     },
     {
-        positionZ: -7.1,
+        positionZ: -6.8,
         element: document.querySelector('.webgl-html-text-wrapper_6')
     },
     {
-        positionZ: -6.8,
+        positionZ: -6.6,
         element: document.querySelector('.webgl-html-text-wrapper_7')
     },
     {
-        positionZ: -5,
+        positionZ: -4.75,
         element: document.querySelector('.webgl-html-text-wrapper_8')
     },
     {
-        positionZ: -2.6,
+        positionZ: -2.45,
         element: document.querySelector('.webgl-html-text-wrapper_9')
     },
     {
-        positionZ: -1.1,
+        positionZ: -0.85,
         element: document.querySelector('.webgl-html-text-wrapper_10')
     },
     {
-        positionZ: 1,
+        positionZ: 1.3,
         element: document.querySelector('.webgl-html-text-wrapper_11')
     },
     {
-        positionZ: 4.6,
+        positionZ: 4.7,
         element: document.querySelector('.webgl-html-text-wrapper_12')
     },
     {
-        positionZ: 7.1,
+        positionZ: 7.4,
         element: document.querySelector('.webgl-html-text-wrapper_13')
     },
     {
-        positionZ: 8.9,
+        positionZ: 9.2,
         element: document.querySelector('.webgl-html-text-wrapper_14')
     },
     {
-        positionZ: 10.4,
+        positionZ: 10.7,
         element: document.querySelector('.webgl-html-text-wrapper_15')
     },
     {
-        positionZ: 14.5,
+        positionZ: 14.8,
         element: document.querySelector('.webgl-html-text-wrapper_16')
     },
     {
-        positionZ: 16.5,
+        positionZ: 16.8,
         element: document.querySelector('.webgl-html-text-wrapper_17')
     }
 ]

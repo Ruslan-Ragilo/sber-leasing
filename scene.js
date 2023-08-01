@@ -250,17 +250,16 @@ const checkDeviceOrientation = () => {
 
 checkDeviceOrientation()
 
-
 window.addEventListener('resize', () => {
     sizes.width = document.body.clientWidth
     sizes.height = window.innerHeight
     sizes.aspect = sizes.width / sizes.height
     checkDeviceOrientation()
-    frustumSize = 2.4 /  sizes.aspect
     camera.left = frustumSize *  sizes.aspect / -2
     camera.right = frustumSize *  sizes.aspect / 2
     camera.top = frustumSize / 2
     camera.bottom = frustumSize / -2
+    camera.zoom = 0.5 * sizes.aspect
     camera.updateProjectionMatrix()
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
@@ -270,7 +269,7 @@ window.addEventListener('resize', () => {
  * Camera
  */
 
-let frustumSize = 2.4 /  sizes.aspect
+let frustumSize = 1.2
 const camera = new THREE.OrthographicCamera(
     frustumSize *  sizes.aspect / -2,
     frustumSize *  sizes.aspect / 2,
@@ -279,6 +278,8 @@ const camera = new THREE.OrthographicCamera(
     0.1,
     20
 );
+camera.zoom = 0.5 * sizes.aspect
+camera.updateProjectionMatrix()
 camera.position.set(cameraXPosition, 5, 0);
 scene.add(camera)
 
@@ -347,11 +348,12 @@ const fadeInObjects = () => {
 
 const BlocksWithTextMovementAndFadeIn = () => {
     for (const block of BlockWithTextInfo) {
-        const screenPosition = new THREE.Vector3(0,0, block.positionZ)
-        screenPosition.project(camera)
-        let translateY = -(screenPosition.y * (sizes.height * 0.5));
-        console.log(translateY)
-        block.element.style.top = Math.floor(translateY) + "px";
+        const screenPosition = (camera.position.z - 7) - block.positionZ
+        let translateY = -(screenPosition * (sizes.height * 0.5));
+        // console.log( translateY * Math.abs(camera.zoom - 1))
+        // + translateY * Math.abs(camera.zoom - 1)
+        block.element.style.top = (translateY * camera.zoom + sizes.height * 0.5 * Math.abs(camera.zoom - 1) ) + "px";
+
         if (!triggeredBlocksWithText.includes(block)) {
             const distanceZ = calculateDistanceZ(carMoving.position.z, block.positionZ - 0.5);
             if (distanceZ < 1) {
