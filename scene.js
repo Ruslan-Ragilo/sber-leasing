@@ -115,7 +115,8 @@ gltfLoader.load(
         scene.add(gltf.scene)
     }
 )
-
+const scrollContainer = document.querySelector('div.canvas-wrapper')
+let scrollPosition = (canvas.offsetTop) / scrollContainer.clientHeight;
 gltfLoader.load(
     '/scene/models/car.glb',
     (gltf) => {
@@ -298,8 +299,8 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  * Scroll
  */
 
-const scrollContainer = document.querySelector('div.canvas-wrapper')
-let scrollPosition = (canvas.offsetTop) / scrollContainer.clientHeight;
+// const scrollContainer = document.querySelector('div.canvas-wrapper')
+// let scrollPosition = (canvas.offsetTop) / scrollContainer.clientHeight;
 
 window.addEventListener('scroll', function () {
     scrollPosition = -((scrollContainer.getBoundingClientRect().top ) / (scrollContainer.clientHeight + (sizes.height * 2)))
@@ -350,7 +351,6 @@ const BlocksWithTextMovementAndFadeIn = () => {
         const screenPosition = new THREE.Vector3(0,0, block.positionZ)
         screenPosition.project(camera)
         let translateY = -(screenPosition.y * (sizes.height * 0.5));
-        console.log(translateY)
         block.element.style.top = Math.floor(translateY) + "px";
         if (!triggeredBlocksWithText.includes(block)) {
             const distanceZ = calculateDistanceZ(carMoving.position.z, block.positionZ - 0.5);
