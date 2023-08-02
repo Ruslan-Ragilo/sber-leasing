@@ -225,6 +225,12 @@
   bottom: 0;
 }
 
+@media screen and (max-width: 900px) {
+  .bg-people {
+    display: none;
+  }
+}
+
 .wrapper-medium {
   display: flex;
   justify-content: space-between;
@@ -267,6 +273,7 @@
   top: 20px;
   right: 20px;
   cursor: pointer;
+  z-index: 111;
 
   width: 54px;
   height: 54px;
@@ -383,7 +390,7 @@ textPath {
 
 .map-city-tooltip {
   position: absolute;
-  z-index: 999;
+  z-index: 110;
   top: 0;
   left: 0;
   text-align: center;
@@ -440,15 +447,18 @@ textPath {
 
 .pointer-city {
   cursor: pointer;
-  transition: r 0.2s ease-in-out;
+  transition: 0.2s;
+  stroke: white;
 }
 /* make larger on hover  */
 .pointer-city:hover {
-  r: 8;
+  stroke-width: 8px;
+  r: 3;
 }
-.pointer-city.is-main-pointer:hover {
-  r: 13;
-}
+/* .pointer-city.is-main-pointer:hover {
+  stroke-width: 13px!important;
+  stroke-opacity: 1!important;
+} */
 
 /* Main */
 
