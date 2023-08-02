@@ -511,8 +511,8 @@ export const DataMap = [
     autosSpecial: '24,50%',
     buses: '1,67%',
     equipment: '1,89%',
-    faceImg: '/img/popupImg/Nizhny_Novgorod/face.png',
-    bgImg: '/img/popupImg/Nizhny_Novgorod/bg.svg',
+    faceImg: '/img/popupImg/Nizhniy_Novgorod/face.png',
+    bgImg: '/img/popupImg/Nizhniy_Novgorod/bg.svg',
   },
   {
     id: 'Irkutsk',
