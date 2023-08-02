@@ -2,6 +2,7 @@ export const DataMap = [
   {
     id: 'Vladivostok',
     name: 'Владивосток',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/vladivostok/',
   },
   {
     id: 'Voronezh',
@@ -50,6 +51,7 @@ export const DataMap = [
   {
     id: 'Novorossiysk',
     name: 'Новороссийск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/novorossiysk/',
   },
   {
     id: 'Samara',
@@ -98,246 +100,331 @@ export const DataMap = [
   {
     id: 'Arkhangelsk',
     name: 'Архангельск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/arkhangelsk/',
   },
   {
     id: 'Barnaul',
     name: 'Барнаул',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/barnaul/',
   },
   {
     id: 'Kurgan',
     name: 'Курган',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/kurgan/',
   },
   {
     id: 'Petrozavodsk',
     name: 'Петрозаводск',
+    linkTo:
+      'https://www.sberleasing.ru/about/contacts/petrozavodsk-tochka-prodazh/',
   },
   {
     id: 'Cherepovets',
     name: 'Череповец',
+    linkTo:
+      'https://www.sberleasing.ru/about/contacts/cherepovets-tochka-prodazh/',
   },
   {
     id: 'Veliky Novgorod',
     name: 'Великий Новгород',
+    linkTo:
+      'https://www.sberleasing.ru/about/contacts/velikiy-novgorod-tochka-prodazh/',
   },
   {
     id: 'Pskov',
     name: 'Псков',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/pskov/',
   },
   {
     id: 'Krasnodar',
     name: 'Краснодар',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/krasnodar/',
   },
   {
     id: 'Stavropol',
     name: 'Ставрополь',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/stavropol/',
   },
   {
     id: 'Penza',
     name: 'Пенза',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/penza/',
   },
   {
     id: 'Orenburg',
     name: 'Оренбург',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/orenburg/',
   },
   {
     id: 'Omsk',
     name: 'Омск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/omsk/',
   },
   {
     id: 'Chelyabinsk',
     name: 'Челябинск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/chelyabinsk/',
   },
   {
     id: 'Belgorod',
     name: 'Белгород',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/belgorod/',
   },
   {
     id: 'Novokuznetsk',
     name: 'Новокузнецк',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/novokuznetsk/',
   },
   {
     id: 'Chita',
     name: 'Чита',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/chita/',
   },
   {
     id: 'Ulan-Ude',
     name: 'Улан-Удэ',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/ulan-ude/',
   },
   {
     id: 'Bryansk',
     name: 'Брянск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/bryansk/',
   },
   {
     id: 'Oryol',
     name: 'Орел',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/oryel/',
   },
   {
     id: 'Smolensk',
     name: 'Смоленск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/smolensk/',
   },
   {
     id: 'Blagoveshchensk',
     name: 'Благовещенск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/blagoveshchensk/',
   },
   {
     id: 'Yakutsk',
     name: 'Якутск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/yakutsk/',
   },
   {
     id: 'Vladimir',
     name: 'Владимир',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/vladimir/',
   },
   {
     id: 'Ryazan',
     name: 'Рязань',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/ryazan/',
   },
   {
     id: 'Tyumen',
     name: 'Тюмень',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/tyumen/',
   },
   {
     id: 'Ufa',
     name: 'Уфа',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/ufa/',
   },
   {
     id: 'Ulyanovsk',
     name: 'Ульяновск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/ulyanovsk/',
   },
   {
     id: 'Saransk',
     name: 'Саранск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/saransk/',
   },
   {
     id: 'Naberezhnye Chelny',
     name: 'Набережные Челны',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/naberezhnye-chelny/',
   },
   {
     id: 'Izhevsk',
     name: 'Ижевск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/izhevsk/',
   },
   {
     id: 'Kazan',
     name: 'Казань',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/kazan/',
   },
   {
     id: 'Khabarovsk',
     name: 'Хабаровск',
+    title: 'Дальневосточный филиал',
+    cityName: 'г. Хабаровск',
+    manager: 'Кротенко Антон Евгеньевич',
+    position: 'Директор филиала',
+    congratsText:
+      '«Дорогие партнеры, в канун нашего юбилея, 30-летия СберЛизинга, в первую очередь хотим поблагодарить вас за доверие. Ведь именно ваши вызовы и начинания мотивируют нас расти и развиваться. Пусть все наши совместные проекты реализуются и работают в долгосрочной перспективе.  Спасибо за сотрудничество и вклад в будущее бизнеса страны!»',
+    foundationYear: '2012',
+    employeesNumber: '49',
+    menWomen: ['50', '50'],
+    clients: '1150',
+    autosLight: '19,23%',
+    autosCommercial: '8,84%',
+    autosCargo: '44,42%',
+    autosSpecial: '22,90%',
+    buses: '2,72%',
+    equipment: '2,90%',
+    faceImg: '/img/popupImg/Khabarovsk/face.png',
+    bgImg: '/img/popupImg/Khabarovsk/bg.svg',
   },
   {
     id: 'Yuzhno-Sakhalinsk',
     name: 'Южно-Сахалинск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/yakutsk/',
   },
   {
     id: 'Ivanovo',
     name: 'Иваново',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/ivanovo/',
   },
   {
     id: 'Saratov',
     name: 'Саратов',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/saratov/',
   },
   {
     id: 'Kirov',
     name: 'Киров',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/kirov/',
   },
   {
     id: 'Syktyvkar',
     name: 'Сыктывкар',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/syktyvkar/',
   },
   {
     id: 'Cheboksary',
     name: 'Чебоксары',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/cheboksary/',
   },
   {
     id: 'Kaliningrad',
     name: 'Калининград',
+    linkTo:
+      'https://www.sberleasing.ru/about/contacts/kaliningrad-tochka-prodazh/',
   },
   {
     id: 'Kaluga',
     name: 'Калуга',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/kaluga/',
   },
   {
     id: 'Tula',
     name: 'Тула',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/tula/',
   },
   {
     id: 'Kemerovo',
     name: 'Кемерово',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/kemerovo/',
   },
   {
     id: 'Nizhnevartovsk',
     name: 'Нижневартовск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/nizhnevartovsk/',
   },
   {
     id: 'Surgut',
     name: 'Сургут',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/surgut/',
   },
   {
     id: 'Lipetsk',
     name: 'Липецк',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/lipetsk/',
   },
   {
     id: 'Tver',
     name: 'Тверь',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/tver/',
   },
   {
     id: 'Tolyatti',
     name: 'Тольятти',
+    linkTo:
+      'https://www.sberleasing.ru/about/contacts/tolyatti-tochka-prodazh/',
   },
   {
     id: 'Tomsk',
     name: 'Томск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/tomsk/',
   },
   {
     id: 'Volgodonsk',
     name: 'Волгодонск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/volgodonsk/',
   },
   {
     id: 'Pyatigorsk',
     name: 'Пятигорск',
+    linkTo:
+      'https://www.sberleasing.ru/about/contacts/pyatigorsk-tochka-prodazh/',
   },
   {
     id: 'Volgograd',
     name: 'Волгоград',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/volgograd/',
   },
   {
     id: 'Krasnoyarsk',
     name: 'Красноярск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/krasnoyarsk/',
   },
   {
     id: 'Novy Urengoy',
     name: 'Новый Уренгой',
+    linkTo:
+      'https://www.sberleasing.ru/about/contacts/novyy-urengoy-tochka-prodazh/',
   },
   {
     id: 'Salekhard',
     name: 'Салехард',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/salekhard/',
   },
   {
     id: 'Perm',
     name: 'Пермь',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/perm/',
   },
   {
     id: 'Kursk',
     name: 'Курск',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/kursk/',
   },
   {
     id: 'Tambov',
     name: 'Тамбов',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/tambov/',
   },
   {
     id: 'Magadan',
     name: 'Магадан',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/magadan/',
   },
   {
     id: 'Vologda',
     name: 'Вологда',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/vologda/',
   },
   {
     id: 'Yaroslavl',
     name: 'Ярославль',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/yaroslavl/',
   },
   {
     id: 'Astrakhan',
     name: 'Астрахань',
+    linkTo: 'https://www.sberleasing.ru/about/contacts/astrakhan/',
   },
   {
     id: 'Moscow1',

@@ -132,3 +132,12 @@ function showPopup(city) {
 
   popup.classList.add('open');
 }
+
+const smallCities = DataMap.filter((city) => !!city.linkTo);
+
+smallCities.forEach((city) => {
+  const currentCity = document.getElementById(city.id);
+  currentCity.addEventListener('click', () =>
+    window.open(city.linkTo, '_blank'),
+  );
+});
