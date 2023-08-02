@@ -172,7 +172,7 @@
   flex-direction: column;
   gap: 15px;
   min-height: 330px;
-  width: 93%;
+  width: 100%;
   position: relative;
 }
 
@@ -180,6 +180,8 @@
   display: flex;
   flex-direction: column;
   gap: 27px;
+  position: relative;
+  min-height: 350px;
 }
 
 .info-block {
@@ -219,8 +221,8 @@
 
 .bg-people {
   position: absolute;
-  top: 0;
   right: 0;
+  bottom: 0;
 }
 
 .wrapper-medium {
@@ -409,29 +411,29 @@ textPath {
 
 .is-main-pointer {
   animation: flickerPonter 2.5s linear infinite;
-  stroke: #000000;
+  stroke: #ffffff;
   box-sizing: border-box;
 }
 
 @keyframes flickerPonter {
   0% {
-    stroke-opacity: 0.1;
+    stroke-opacity: 0.2;
     stroke-width: 1px;
   }
   25% {
-    stroke-opacity: 0.2;
+    stroke-opacity: 0.5;
     stroke-width: 5px;
   }
   50% {
-    stroke-opacity: 0.3;
+    stroke-opacity: 0.5;
     stroke-width: 7px;
   }
   75% {
-    stroke-opacity: 0.2;
+    stroke-opacity: 0.5;
     stroke-width: 3px;
   }
   100% {
-    stroke-opacity: 0.1;
+    stroke-opacity: 0.2;
     stroke-width: 1px;
   }
 }
