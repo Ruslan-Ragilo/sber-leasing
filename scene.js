@@ -53,7 +53,7 @@ const loadingManager = new THREE.LoadingManager(
     (itemUrl, itemsLoaded, itemsTotal) =>
     {
         const progressRatio = itemsLoaded / itemsTotal
-        loadingProgress.style.background = `conic-gradient(from 4rad, #00000000 ${Math.floor(progressRatio * 360)}deg, white 0deg)`
+        loadingProgress.style.background = `conic-gradient(from 1rad, #00000000 ${Math.floor(progressRatio * 360)}deg, white 0deg)`
     }
 )
 const textureLoader = new THREE.TextureLoader(loadingManager)
@@ -334,7 +334,7 @@ const BlocksWithTextMovementAndFadeIn = () => {
     for (const block of BlockWithTextInfo) {
         const screenPosition = (camera.position.z - 7) - block.positionZ
         let translateY = -(screenPosition * (sizes.height * 0.5));
-        block.element.style.top = (translateY * camera.zoom + sizes.height * 0.5 * Math.abs(camera.zoom - 1) ) + "px";
+        block.element.style.top = (translateY * camera.zoom + sizes.height * 0.5 * -(camera.zoom - 1) ) + "px";
         if (!triggeredBlocksWithText.includes(block)) {
             const distanceZ = calculateDistanceZ(carMoving.position.z, block.positionZ - 0.5);
             if (distanceZ < 1.3) {
@@ -354,9 +354,10 @@ const animate = () => {
         const carZPosition = carMoving.position.z + 7;
         const clampedZPosition = Math.min(Math.max(carZPosition, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
         const clampedLookAtZPosition = Math.min(Math.max(carMoving.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition);
+        const lambda = (sizes.height <= 450) ? 40 : 3;
         camera.position.z = clampedZPosition;
         camera.lookAt(cameraXPosition, 0, clampedLookAtZPosition);
-        mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, 3, deltaTime));
+        mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, lambda, deltaTime));
         fadeInObjects();
         changeCarMaterials();
         BlocksWithTextMovementAndFadeIn()
