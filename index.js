@@ -99,7 +99,7 @@ function showPopup(city) {
   position.textContent = city.position;
 
   const congrats = document.getElementById('congrats');
-  congrats.textContent = city.congratsText;
+  congrats.innerHTML = city.congratsText;
 
   const foundationYear = document.getElementById('foundationYear');
   foundationYear.textContent = city.foundationYear;
