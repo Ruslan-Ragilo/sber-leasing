@@ -40,10 +40,10 @@
   --font-size-title-s: 3em; /* 42px */
 }
 
-//scroll
+/* scroll */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #00AC7B transparent;
+  scrollbar-color: #00ac7b transparent;
 }
 
 /* Chrome, Edge and Safari */
@@ -66,17 +66,16 @@
 
 *::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-color: #00AC7B;
+  background-color: #00ac7b;
 }
 
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #62A34B;
+  background-color: #62a34b;
 }
 
 *::-webkit-scrollbar-thumb:active {
-  background-color: #62A34B;
+  background-color: #62a34b;
 }
-
 
 .mob-section {
   flex-direction: column;
@@ -92,7 +91,6 @@
   z-index: 3;
   display: none;
 }
-
 
 .mob-section img {
   /* max-width: 300px; */
@@ -125,17 +123,31 @@
 }
 
 .popup {
+  position: absolute;
+  top: -100;
+  left: -100;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.popup.open {
+  visibility: visible;
+  width: 100%;
+  height: auto;
+
+  padding: 20px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   height: 100vh;
-  background-color: rgba(0, 0, 0, .4);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 111;
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none
 }
 
 .wrapper-popup {
@@ -146,11 +158,13 @@
   width: 100%;
   background-color: white;
   position: relative;
-  overflow-y: scroll;;
+  overflow-y: scroll;
 }
 
 .avatar {
   border-radius: 20px;
+  object-fit: cover;
+  max-width: 140px;
 }
 
 .wrapper-top {
@@ -158,17 +172,25 @@
   flex-direction: column;
   gap: 15px;
   min-height: 330px;
-  width: 93%;
+  width: 100%;
   position: relative;
 }
 
-.wrapper-top > div {
+.top-block {
   display: flex;
-  gap: 15px;
+  flex-direction: column;
+  gap: 27px;
+  position: relative;
+  min-height: 350px;
+}
+
+.info-block {
+  display: flex;
+  gap: 23px;
 }
 
 .region {
-  color: #1F1F1F;
+  color: #1f1f1f;
   font-size: 32px;
 }
 
@@ -179,13 +201,13 @@
 }
 
 .name {
-  color: #1F1F1F;
+  color: #1f1f1f;
   font-size: 20px;
   margin-top: 20px;
 }
 
 .position {
-  color: #00AC7B;
+  color: #00ac7b;
   font-size: 16px;
   margin-top: 5px;
 }
@@ -199,8 +221,14 @@
 
 .bg-people {
   position: absolute;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+}
+
+@media screen and (max-width: 900px) {
+  .bg-people {
+    display: none;
+  }
 }
 
 .wrapper-medium {
@@ -212,7 +240,7 @@
 }
 
 .item-medium > p:first-child {
-  color: #21A038;
+  color: #21a038;
   font-size: 32px;
 }
 
@@ -233,7 +261,7 @@
 .item-bottom {
   padding: 10px 14px;
   border-radius: 15px;
-  border: 1px solid #B3B3B3;
+  border: 1px solid #b3b3b3;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -242,9 +270,19 @@
 
 .close-popup {
   position: absolute;
-  top: 40px;
-  right: 40px;
+  top: 20px;
+  right: 20px;
   cursor: pointer;
+  z-index: 111;
+
+  width: 54px;
+  height: 54px;
+
+  transition: transform 0.2s ease-in-out;
+}
+
+.close-popup:hover {
+  transform: scale(1.2);
 }
 
 body {
@@ -318,9 +356,9 @@ body {
 }
 
 .title-banner-bottom {
-	font-size: var(--font-size-l);
-	line-height: 1.3em;
-	margin-top: 15px;
+  font-size: var(--font-size-l);
+  line-height: 1.3em;
+  margin-top: 15px;
 }
 
 .circle-text-banner {
@@ -352,7 +390,7 @@ textPath {
 
 .map-city-tooltip {
   position: absolute;
-  z-index: 999;
+  z-index: 110;
   top: 0;
   left: 0;
   text-align: center;
@@ -380,44 +418,47 @@ textPath {
 
 .is-main-pointer {
   animation: flickerPonter 2.5s linear infinite;
-  stroke: #000000;
+  stroke: #ffffff;
   box-sizing: border-box;
 }
 
 @keyframes flickerPonter {
   0% {
-    stroke-opacity: 0.1;
+    stroke-opacity: 0.2;
     stroke-width: 1px;
   }
   25% {
-    stroke-opacity: 0.2;
+    stroke-opacity: 0.5;
     stroke-width: 5px;
   }
   50% {
-    stroke-opacity: 0.3;
+    stroke-opacity: 0.5;
     stroke-width: 7px;
   }
   75% {
-    stroke-opacity: 0.2;
+    stroke-opacity: 0.5;
     stroke-width: 3px;
   }
   100% {
-    stroke-opacity: 0.1;
+    stroke-opacity: 0.2;
     stroke-width: 1px;
   }
 }
 
 .pointer-city {
   cursor: pointer;
-  transition: r 0.2s ease-in-out;
+  transition: 0.2s;
+  stroke: white;
 }
 /* make larger on hover  */
 .pointer-city:hover {
-  r: 8;
+  stroke-width: 8px;
+  r: 3;
 }
-.pointer-city.is-main-pointer:hover {
-  r: 13;
-}
+/* .pointer-city.is-main-pointer:hover {
+  stroke-width: 13px!important;
+  stroke-opacity: 1!important;
+} */
 
 /* Main */
 
@@ -443,13 +484,12 @@ textPath {
 .main-description-text-top {
   font-size: 16px;
   margin-bottom: 30px;
-  color: var(--gray-text);;
-
+  color: var(--gray-text);
 }
 
 .main-description-text-bottom {
   font-size: 20px;
-  color:  var(--black-text);
+  color: var(--black-text);
 }
 
 .canvas-wrapper {
@@ -552,7 +592,7 @@ textPath {
   padding: 2px;
   opacity: 0;
   transform: translateY(-50%);
-  background: linear-gradient(to bottom right, #00AC7B, #078BE3);
+  background: linear-gradient(to bottom right, #00ac7b, #078be3);
 }
 
 .webgl-html-text {
@@ -573,7 +613,6 @@ textPath {
   font-size: var(--font-size-s);
   font-weight: 300;
 }
-
 
 /* Footer */
 .share {
@@ -618,7 +657,7 @@ textPath {
 }
 
 .share-heading__accent::before {
-  content: "\a";
+  content: '\a';
   white-space: pre;
 }
 
@@ -654,7 +693,6 @@ textPath {
   align-items: center;
   background-color: var(--bg-black);
   padding: 74px 0;
-
 }
 
 .footer-logo {
@@ -670,9 +708,7 @@ textPath {
   margin-right: 16px;
 }
 
-
 @media screen and (max-width: 1439px) {
-
   .webgl-html-text-wrapper {
     max-width: 340px;
   }
@@ -697,19 +733,21 @@ textPath {
     overflow-x: scroll;
   }
 
-  .header-map::-webkit-scrollbar { width: 0; height: 0; }
+  .header-map::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
 
   /* ie 10+ */
-  .header-map { -ms-overflow-style: none; }
+  .header-map {
+    -ms-overflow-style: none;
+  }
 
   /* фф (свойство больше не работает, других способов тоже нет)*/
-  .header-map { overflow: -moz-scrollbars-none; }
-
+  .header-map {
+    overflow: -moz-scrollbars-none;
+  }
 }
-
-
-
-
 
 @media screen and (max-width: 1180px) {
   body {
@@ -763,7 +801,6 @@ textPath {
     left: -50px;
   }
 
-
   .webgl-html-text-wrapper {
     max-width: 330px;
   }
@@ -781,7 +818,6 @@ textPath {
     padding: 0 0 8px;
     font-size: 10px;
   }
-
 }
 
 @media screen and (max-width: 768px) {
