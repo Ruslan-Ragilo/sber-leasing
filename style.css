@@ -77,6 +77,7 @@
   background-color: #62a34b;
 }
 
+
 .mob-section {
   flex-direction: column;
   justify-content: space-between;
@@ -136,7 +137,7 @@
   width: 100%;
   height: auto;
 
-  padding: 20px;
+  /* padding: 20px; */
   position: fixed;
   top: 0;
   left: 0;
@@ -150,15 +151,22 @@
   align-items: center;
 }
 
-.wrapper-popup {
-  padding: 40px;
+
+.wrapper-scroll {
+  padding: 20px 0;
+  background-color: white;
   border-radius: 40px;
-  max-height: 80vh;
   max-width: 860px;
   width: 100%;
-  background-color: white;
   position: relative;
+}
+
+.wrapper-popup {
+  padding: 20px 40px;
+  
+  max-height: 80vh;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .avatar {
@@ -223,6 +231,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
+  width: 38%;
 }
 
 @media screen and (max-width: 900px) {
@@ -270,8 +279,8 @@
 
 .close-popup {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 14px;
+  right: 12px;
   cursor: pointer;
   z-index: 111;
 
@@ -290,6 +299,7 @@ body {
   font-family: 'SB Sans Display';
   font-weight: normal;
   color: var(--black-text);
+  overflow-x: hidden;
 }
 
 * {
@@ -377,6 +387,8 @@ body {
 
 textPath {
   color: #00ac7b;
+  -webkit-text-fill-color: rgba(100, 200, 0, 1); 
+  -webkit-opacity: 1; 
   font-weight: 600;
 }
 
@@ -420,6 +432,7 @@ textPath {
   animation: flickerPonter 2.5s linear infinite;
   stroke: #ffffff;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 @keyframes flickerPonter {

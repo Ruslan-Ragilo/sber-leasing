@@ -24,7 +24,7 @@ export const DataMap = [
     buses: '0,63%',
     equipment: '1,82%',
     faceImg: '/img/popupImg/Voronezh/face.png',
-    bgImg: '/img/popupImg/Voronezh/bg.svg',
+    bgImg: '/img/popupImg/Voronezh/bg.png',
   },
   {
     id: 'Rostov-on-Don',
@@ -46,7 +46,7 @@ export const DataMap = [
     buses: '1,24%',
     equipment: '2,57%',
     faceImg: '/img/popupImg/Rostov-on-Don/face.png',
-    bgImg: '/img/popupImg/Rostov-on-Don/bg.svg',
+    bgImg: '/img/popupImg/Rostov-on-Don/bg.png',
   },
   {
     id: 'Novorossiysk',
@@ -73,7 +73,7 @@ export const DataMap = [
     buses: '0,62%',
     equipment: '2,48%',
     faceImg: '/img/popupImg/Samara/face.png',
-    bgImg: '/img/popupImg/Samara/bg.svg',
+    bgImg: '/img/popupImg/Samara/bg.png',
   },
   {
     id: 'Yekaterinburg',
@@ -95,7 +95,7 @@ export const DataMap = [
     buses: '1,55%',
     equipment: '2,27%',
     faceImg: '/img/popupImg/Yekaterinburg/face.png',
-    bgImg: '/img/popupImg/Yekaterinburg/bg.svg',
+    bgImg: '/img/popupImg/Yekaterinburg/bg.png',
   },
   {
     id: 'Arkhangelsk',
@@ -275,7 +275,7 @@ export const DataMap = [
     buses: '2,72%',
     equipment: '2,90%',
     faceImg: '/img/popupImg/Khabarovsk/face.png',
-    bgImg: '/img/popupImg/Khabarovsk/bg.svg',
+    bgImg: '/img/popupImg/Khabarovsk/bg.png',
   },
   {
     id: 'Yuzhno-Sakhalinsk',
@@ -446,7 +446,7 @@ export const DataMap = [
     buses: '0,66%',
     equipment: '1,54%',
     faceImg: '/img/popupImg/Moscow1/face.png',
-    bgImg: '/img/popupImg/Moscow1/bg.svg',
+    bgImg: '/img/popupImg/Moscow1/bg.png',
   },
   {
     id: 'Moscow2',
@@ -468,7 +468,7 @@ export const DataMap = [
     buses: '1,07%',
     equipment: '1,68%',
     faceImg: '/img/popupImg/Moscow2/face.png',
-    bgImg: '/img/popupImg/Moscow2/bg.svg',
+    bgImg: '/img/popupImg/Moscow2/bg.png',
   },
   {
     id: 'Saint Petersburg',
@@ -490,7 +490,7 @@ export const DataMap = [
     buses: '1,49%',
     equipment: '1,80%',
     faceImg: '/img/popupImg/Saint_Petersburg/face.png',
-    bgImg: '/img/popupImg/Saint_Petersburg/bg.svg',
+    bgImg: '/img/popupImg/Saint_Petersburg/bg.png',
   },
   {
     id: 'Nizhny Novgorod',
@@ -512,7 +512,7 @@ export const DataMap = [
     buses: '1,67%',
     equipment: '1,89%',
     faceImg: '/img/popupImg/Nizhniy_Novgorod/face.png',
-    bgImg: '/img/popupImg/Nizhniy_Novgorod/bg.svg',
+    bgImg: '/img/popupImg/Nizhniy_Novgorod/bg.png',
   },
   {
     id: 'Irkutsk',
@@ -534,7 +534,7 @@ export const DataMap = [
     buses: '0,60%',
     equipment: '2,23%',
     faceImg: '/img/popupImg/Irkutsk/face.png',
-    bgImg: '/img/popupImg/Irkutsk/bg.svg',
+    bgImg: '/img/popupImg/Irkutsk/bg.png',
   },
   {
     id: 'Novosibirsk',
@@ -556,7 +556,7 @@ export const DataMap = [
     buses: '2,04%',
     equipment: '3,38%',
     faceImg: '/img/popupImg/Novosibirsk/face.png',
-    bgImg: '/img/popupImg/Novosibirsk/bg.svg',
+    bgImg: '/img/popupImg/Novosibirsk/bg.png',
   },
 ];
 
