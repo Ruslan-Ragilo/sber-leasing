@@ -317,7 +317,7 @@ export const ImagesInfo = [
     {name: 'i_12', position: [0.67, 0, 0.92], scale: 1.8, fadeInStartPosition: 0.3},
     {name: 'i_13', position: [-0.75, 0, 3.8], scale: 0.9, fadeInStartPosition: 3.5},
     {name: 'i_14', position: [0.33, 0, 5.4], scale: 1.0, fadeInStartPosition: 5.5},
-    {name: 'i_15_1', position: [-0.4, 0, 6.9], scale: 0.45, fadeInStartPosition: 7},
+    {name: 'i_15_1', position: [-0.28, 0, 6.76], scale: 0.45, fadeInStartPosition: 7},
     {name: 'i_15_2_b', position: [-0.36, -1, 6.46], scale: 1.1, fadeInStartPosition: 7.7},
     {name: 'i_15_2_t', position: [-0.36, 1, 9.26], scale: 1.1, fadeInStartPosition: 7.7},
     {name: 'i_15_3', position: [-0.42, 0.2, 8.86], scale: 0.35, fadeInStartPosition: 8.3},
@@ -325,80 +325,98 @@ export const ImagesInfo = [
     {name: 'i_16', position: [-0.08, -2, 7.74], scale: 2.6, fadeInStartPosition: 10},
     {name: 'i_17', position: [-0.37, 1, 15.55], scale: 1.1, fadeInStartPosition: 14},
     {name: 'i_18', position: [0.35, 0, 16.8], scale: 0.9, fadeInStartPosition: 17},
-    {name: 'salut', position: [0.7, 1, 18.6], scale: 0.9, fadeInStartPosition: 18},
+    {name: 'salut', position: [0.4, 1, 18.4], scale: 0.9, fadeInStartPosition: 17.7},
 
 ]
 
 export const BlockWithTextInfo = [
     {
+        year: 1993,
         positionZ: -18.3,
         element: document.querySelector('.webgl-html-text-wrapper_0')
     },
     {
+        year: 1994,
         positionZ: -16.8,
         element: document.querySelector('.webgl-html-text-wrapper_1')
     },
     {
+        year: 1996,
         positionZ: -15.3,
         element: document.querySelector('.webgl-html-text-wrapper_2')
     },
     {
+        year: 1998,
         positionZ: -13.3,
         element: document.querySelector('.webgl-html-text-wrapper_3')
     },
     {
-        positionZ: -10.9,
+        year: 2000,
+        positionZ: -11.1,
         element: document.querySelector('.webgl-html-text-wrapper_4')
     },
     {
+        year: 2006,
         positionZ: -8.5,
         element: document.querySelector('.webgl-html-text-wrapper_5')
     },
     {
+        year: 2009,
         positionZ: -6.8,
         element: document.querySelector('.webgl-html-text-wrapper_6')
     },
     {
+        year: 2010,
         positionZ: -6.6,
         element: document.querySelector('.webgl-html-text-wrapper_7')
     },
     {
+        year: 2011,
         positionZ: -4.75,
         element: document.querySelector('.webgl-html-text-wrapper_8')
     },
     {
+        year: 2013,
         positionZ: -2.45,
         element: document.querySelector('.webgl-html-text-wrapper_9')
     },
     {
+        year: 2014,
         positionZ: -0.85,
         element: document.querySelector('.webgl-html-text-wrapper_10')
     },
     {
+        year: 2016,
         positionZ: 1.3,
         element: document.querySelector('.webgl-html-text-wrapper_11')
     },
     {
+        year: 2018,
         positionZ: 4.7,
         element: document.querySelector('.webgl-html-text-wrapper_12')
     },
     {
-        positionZ: 7.4,
+        year: 2019,
+        positionZ: 7.6,
         element: document.querySelector('.webgl-html-text-wrapper_13')
     },
     {
+        year: 2020,
         positionZ: 9.2,
         element: document.querySelector('.webgl-html-text-wrapper_14')
     },
     {
+        year: 2021,
         positionZ: 10.7,
         element: document.querySelector('.webgl-html-text-wrapper_15')
     },
     {
+        year: 2022,
         positionZ: 14.8,
         element: document.querySelector('.webgl-html-text-wrapper_16')
     },
     {
+        year: 2023,
         positionZ: 16.8,
         element: document.querySelector('.webgl-html-text-wrapper_17')
     }

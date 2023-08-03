@@ -482,23 +482,23 @@ textPath {
 
 .loading-top {
   display: flex;
-  margin-bottom: 43px;
-  min-height: 250px;
+  margin-bottom: 54px;
+  min-height: 175px;
 }
 
 .loading-spinner {
   border-radius: 50%;
-  width: 214px;
-  height: 214px;
-  background: linear-gradient(142deg, #23b76b 0%, #025bb4 100%);
+  width: 174px;
+  height: 174px;
+  background: linear-gradient(142deg, #039CAC 0%, #078CDE 100%);
 
   position: relative;
 }
 
 .loading-spinner-inner {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 115px;
+  height: 115px;
   background: white;
   position: absolute;
   z-index: 4;
@@ -509,10 +509,10 @@ textPath {
 
 .loading-spinner-progress {
   border-radius: 50%;
-  width: 216px;
-  height: 216px;
+  width: 175px;
+  height: 175px;
   position: absolute;
-  background: conic-gradient(from 4rad, #00000000 6deg, white 0deg);
+  background: conic-gradient(from 1rad, #00000000 0deg, white 0deg);
   z-index: 3;
   top: 50%;
   left: 50%;
