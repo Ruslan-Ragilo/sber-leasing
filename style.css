@@ -393,6 +393,7 @@ textPath {
   -webkit-text-fill-color: rgba(100, 200, 0, 1); 
   -webkit-opacity: 1; 
   font-weight: 600;
+  fill: #00ac7b;
 }
 
 .circle-text-banner {
