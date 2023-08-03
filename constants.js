@@ -586,7 +586,7 @@ export const ImagesInfo = [
     {name: 'i_15_1', position: [-0.28, 0, 6.76], scale: 0.45, fadeInStartPosition: 7},
     {name: 'i_15_2_b', position: [-0.36, -1, 6.46], scale: 1.1, fadeInStartPosition: 7.7},
     {name: 'i_15_2_t', position: [-0.36, 1, 9.26], scale: 1.1, fadeInStartPosition: 7.7},
-    {name: 'i_15_3', position: [-0.42, 0.2, 8.86], scale: 0.35, fadeInStartPosition: 8.3},
+    {name: 'i_15_3', position: [-0.42, -0.9, 7.33], scale: 0.35, fadeInStartPosition: 8.3},
     {name: 'i_15_4', position: [0.0, 0, 8.62], scale: 0.35, fadeInStartPosition: 8.7},
     {name: 'i_16', position: [-0.08, -2, 7.74], scale: 2.6, fadeInStartPosition: 10},
     {name: 'i_17', position: [-0.37, 1, 15.55], scale: 1.1, fadeInStartPosition: 14},
@@ -682,7 +682,7 @@ export const BlockWithTextInfo = [
     },
     {
         year: 2023,
-        positionZ: 16.8,
+        positionZ: 16.9,
         element: document.querySelector('.webgl-html-text-wrapper_17')
     }
 ]

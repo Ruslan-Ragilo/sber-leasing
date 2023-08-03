@@ -506,61 +506,9 @@ textPath {
   width: 100%;
 }
 
-.loading-overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  background-color: white;
-  z-index: 5;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
 
-.loading-top {
-  display: flex;
-  margin-bottom: 54px;
-  min-height: 175px;
-}
-
-.loading-spinner {
-  border-radius: 50%;
-  width: 174px;
-  height: 174px;
-  background: linear-gradient(142deg, #039CAC 0%, #078CDE 100%);
-
-  position: relative;
-}
-
-.loading-spinner-inner {
-  border-radius: 50%;
-  width: 115px;
-  height: 115px;
-  background: white;
-  position: absolute;
-  z-index: 4;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.loading-spinner-progress {
-  border-radius: 50%;
-  width: 175px;
-  height: 175px;
-  position: absolute;
-  background: conic-gradient(from 1rad, #00000000 0deg, white 0deg);
-  z-index: 3;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 .webgl-html {
-  --top-offset: 0;
   height: 100vh;
   position: sticky;
   top: 0;
@@ -671,6 +619,59 @@ textPath {
 
 .webgl-html-text-wrapper_17 {
   left: 2%;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.loading-top {
+  display: flex;
+  margin-bottom: 54px;
+  min-height: 175px;
+}
+
+.loading-spinner {
+  border-radius: 50%;
+  width: 174px;
+  height: 174px;
+  background: linear-gradient(142deg, #039CAC 0%, #078CDE 100%);
+
+  position: relative;
+}
+
+.loading-spinner-inner {
+  border-radius: 50%;
+  width: 115px;
+  height: 115px;
+  background: white;
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-spinner-progress {
+  border-radius: 50%;
+  width: 175px;
+  height: 175px;
+  position: absolute;
+  background: conic-gradient(from 1rad, #00000000 0deg, white 0deg);
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 
