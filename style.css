@@ -77,6 +77,9 @@
   background-color: #62a34b;
 }
 
+body {
+  overflow-x: hidden;
+}
 
 .mob-section {
   flex-direction: column;
@@ -483,7 +486,7 @@ textPath {
 }
 
 .main-description {
-  padding-top: 140px;
+  padding: 140px 20px 0;
   text-align: center;
   display: flex;
   align-items: center;
@@ -511,8 +514,6 @@ textPath {
 }
 
 .webgl {
-  /*height: 100vh;*/
-  /*width: 100%;*/
   position: sticky;
   top: 0;
   bottom: 0;
@@ -982,6 +983,11 @@ textPath {
 }
 
 @media screen and (max-height:  450px) {
+
+  .main-description {
+    padding: 80px 16px 0;
+
+  }
 
   .webgl-html-text-wrapper {
     max-width: 300px;
