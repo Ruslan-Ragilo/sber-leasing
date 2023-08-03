@@ -354,9 +354,10 @@ const animate = () => {
         const carZPosition = carMoving.position.z + 7;
         const clampedZPosition = Math.min(Math.max(carZPosition, cameraMaxFarLookAtZPosition + 7), cameraMaxNearLookAtZPosition + 7);
         const clampedLookAtZPosition = Math.min(Math.max(carMoving.position.z, cameraMaxFarLookAtZPosition), cameraMaxNearLookAtZPosition);
+        const lambda = (sizes.height <= 450) ? 40 : 3;
         camera.position.z = clampedZPosition;
         camera.lookAt(cameraXPosition, 0, clampedLookAtZPosition);
-        mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, 3, deltaTime));
+        mixer.setTime(THREE.MathUtils.damp(mixer.time, carAnimation.duration * scrollPosition, lambda, deltaTime));
         fadeInObjects();
         changeCarMaterials();
         BlocksWithTextMovementAndFadeIn()

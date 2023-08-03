@@ -617,7 +617,7 @@ export const BlockWithTextInfo = [
     },
     {
         year: 2000,
-        positionZ: -11.1,
+        positionZ: -11.25,
         element: document.querySelector('.webgl-html-text-wrapper_4')
     },
     {
