@@ -81,6 +81,18 @@ body {
   overflow-x: hidden;
 }
 
+.logo-main {
+  width: 380px;
+}
+
+.load3 {
+  width: 114px;
+}
+
+.logo-loading {
+  width: 299px;
+}
+
 .mob-section {
   flex-direction: column;
   justify-content: space-between;
