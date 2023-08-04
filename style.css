@@ -634,7 +634,7 @@ textPath {
 
 .webgl-html-text-wrapper_17 {
   left: 2%;
-}
+}заоголовок, колесо, логотип
 
 .loading-overlay {
   position: fixed;
@@ -784,6 +784,35 @@ textPath {
   margin-right: 16px;
 }
 
+.text-gradient {
+  font-size: 84px;
+  background: -webkit-linear-gradient(#00AC7B, #078BE3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600!important;
+}
+
+.mobBr {
+  display: none;
+}
+
+
+@media screen and (max-width: 980px) {
+  .mobBr {
+    display: block;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .text-gradient {
+    font-size: 63px;
+  }
+}
+
 @media screen and (max-width: 1439px) {
   .webgl-html-text-wrapper {
     max-width: 340px;
@@ -825,22 +854,10 @@ textPath {
   }
 }
 
-@media screen and (max-width: 1180px) {
-  body {
-  }
-
-  .container {
-    max-width: 744px;
-    width: 100%;
-    padding: 0 20px;
-  }
+@media screen and (max-width: 1280px) {
 
   .header {
     padding-top: 50px;
-  }
-
-  .header-banner {
-    align-items: center;
   }
 
   .header-banner__left::after {
