@@ -634,15 +634,15 @@ textPath {
 
 .webgl-html-text-wrapper_17 {
   left: 2%;
-}заоголовок, колесо, логотип
+}
 
 .loading-overlay {
   position: fixed;
   top: 0;
   bottom: 0;
-  background-color: white;
-  z-index: 5;
   width: 100%;
+  background-color: white;
+  z-index: 111;
   display: flex;
   flex-direction: column;
   align-items: center;
