@@ -922,6 +922,7 @@ textPath {
   }
 
   .circle-text-banner {
+    max-width: 15pc;
     min-width: 150px;
     position: relative;
     top: 80px;
@@ -1042,7 +1043,7 @@ textPath {
 @media screen and (max-height:  450px) {
 
   .main-description {
-    padding: 80px 16px 0;
+    padding: 80px 16px 80px;
 
   }
 
