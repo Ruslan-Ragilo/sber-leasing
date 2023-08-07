@@ -842,7 +842,7 @@ textPath {
   }
 
   .container {
-    padding: 0 20px;
+    padding: 0 60px;
   }
 }
 
@@ -1043,7 +1043,7 @@ textPath {
 @media screen and (max-height:  450px) {
 
   .main-description {
-    padding: 80px 16px 80px;
+    padding: 80px 60px 80px;
 
   }
 
