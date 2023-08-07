@@ -4,10 +4,11 @@ const tooltip = document.getElementById('map-city-tooltip');
 const mapRussia = document.querySelector('.map-russia');
 
 window.addEventListener("DOMContentLoaded", function() {
-  if(window.screen.width > 1440 && !window.screen.width >= 1990) {
+  console.log(window.screen.width);
+  if(window.screen.width > 1440 && window.screen.width <= 2200) {
     mapRussia.setAttribute('width', window.screen.width)
     mapRussia.setAttribute('height', window.innerWidth / 1.85)
-  }  else if (window.screen.width > 1990) {
+  }  else if (window.screen.width > 2200) {
     mapRussia.setAttribute('width', 1990)
     mapRussia.setAttribute('height', 1990 / 1.85)
   } else {
