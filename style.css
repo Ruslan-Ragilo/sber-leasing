@@ -110,7 +110,7 @@ body {
   top: 0;
   bottom: -60px;
   background-color: white;
-  z-index: 3;
+  z-index: 1113;
   display: none;
 }
 
@@ -441,7 +441,6 @@ textPath {
 }
 
 .header-map {
-  max-width: 1600px;
   height: auto;
   position: relative;
   margin: 20px auto -5px;
@@ -452,9 +451,9 @@ textPath {
   margin-top: 25px;
 }
 
-.is-main-pointer {
-  animation: flickerPonter 2.5s linear infinite;
-  stroke: #ffffff;
+.pointer-city.is-main-pointer {
+  animation: flickerPonter 1.5s linear infinite;
+  stroke: #00D900;
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -485,7 +484,7 @@ textPath {
 .pointer-city {
   cursor: pointer;
   transition: 0.2s;
-  stroke: #10caf1;
+  stroke: #ffffff;
 }
 /* make larger on hover  */
 .pointer-city:hover {
@@ -503,6 +502,8 @@ textPath {
   border-radius: 50px 50px 0 0;
   /*background-color: white;*/
   background-color: var(--bg-white);
+  z-index: 11;
+  position: relative;
   box-shadow: 0 0 125px 0 #00000073;
 }
 
@@ -662,7 +663,7 @@ textPath {
   bottom: 0;
   width: 100%;
   background-color: white;
-  z-index: 111;
+  z-index: 1114;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -816,10 +817,11 @@ textPath {
   display: none;
 }
 .scrollDown {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
+  position: absolute!important;
+  bottom: 20px!important;
+  left: 50%!important;
   transform: translate(-50%, 0);
+  z-index: 11;
 }
 .scrollDown .arrrrr {
   animation: arrDown 2s linear infinite;

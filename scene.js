@@ -234,7 +234,12 @@ const checkDeviceOrientation = () => {
 
 checkDeviceOrientation()
 
+const mapRussia = document.querySelector('.map-russia');
 window.addEventListener('resize', () => {
+    if(window.screen.width > 1000) {
+        mapRussia.setAttribute('width', window.screen.width)
+        mapRussia.setAttribute('height', window.innerWidth / 1.85)
+    }
     sizes.width = document.body.clientWidth
     sizes.height = window.innerHeight
     sizes.aspect = sizes.width / sizes.height
