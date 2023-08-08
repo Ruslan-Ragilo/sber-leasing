@@ -1,6 +1,17 @@
 import { DataMap } from './constants.js';
 
 const tooltip = document.getElementById('map-city-tooltip');
+const mapRussia = document.querySelector('.map-russia');
+
+window.addEventListener("DOMContentLoaded", function() {
+  if(window.screen.width > 1440 ) {
+    mapRussia.setAttribute('width', window.screen.width)
+    mapRussia.setAttribute('height', window.innerWidth / 1.85)
+  } else {
+    mapRussia.setAttribute('width', 1440)
+    mapRussia.setAttribute('height', 784)
+  }
+})
 
 const showTooltip = (e, name) => {
   console.log(e.target.getBoundingClientRect());
