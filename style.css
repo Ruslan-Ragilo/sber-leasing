@@ -485,7 +485,7 @@ textPath {
 .pointer-city {
   cursor: pointer;
   transition: 0.2s;
-  stroke: #10caf1;
+  stroke: #5DCA53;
 }
 /* make larger on hover  */
 .pointer-city:hover {
@@ -815,13 +815,14 @@ textPath {
 .mobBr {
   display: none;
 }
-.scrollDown {
+#scrollDown {
   position: absolute;
   bottom: 10px;
   left: 50%;
   transform: translate(-50%, 0);
+  z-index: 3;
 }
-.scrollDown .arrrrr {
+#scrollDown .arrrrr {
   animation: arrDown 2s linear infinite;
 }
 @keyframes arrDown {
