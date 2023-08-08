@@ -825,6 +825,26 @@ textPath {
 #scrollDown .arrrrr {
   animation: arrDown 2s linear infinite;
 }
+#manualMap {
+  position: absolute;
+  top: 30%;
+  left: 7%;
+  display: flex;
+  align-items: center;
+  max-width: 250px;
+  gap: 10px;
+}
+#manualMap .forMob {
+  display: none;
+}
+@media screen and (max-height: 450px) {
+  #manualMap .forMob {
+    display: block;
+  }
+  #manualMap .forDesc {
+    display: none;
+  }
+}
 @keyframes arrDown {
   0% {
     transform: translateY(0);
