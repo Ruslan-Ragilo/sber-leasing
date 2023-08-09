@@ -1,25 +1,25 @@
 @font-face {
-  font-family: 'SB Sans Display';
+  font-family: "SB Sans Display";
   font-weight: normal;
-  src: url('/fonts/Display/SB Sans Display.otf');
+  src: url("/fonts/Display/SB Sans Display.otf");
 }
 
 @font-face {
-  font-family: 'SB Sans Display';
+  font-family: "SB Sans Display";
   font-weight: bold;
-  src: url('/fonts/Display/SB Sans Display Semibold.otf');
+  src: url("/fonts/Display/SB Sans Display Semibold.otf");
 }
 
 @font-face {
-  font-family: 'SB Sans Display';
+  font-family: "SB Sans Display";
   font-weight: 300;
-  src: url('/fonts/Sberbank PJSC/Interface/SB Sans Interface Light.otf');
+  src: url("/fonts/Sberbank PJSC/Interface/SB Sans Interface Light.otf");
 }
 
 @font-face {
-  font-family: 'SB Sans Display';
+  font-family: "SB Sans Display";
   font-weight: 200;
-  src: url('/public/fonts/Display/SBSansDisplay-Light.otf');
+  src: url("/public/fonts/Display/SBSansDisplay-Light.otf");
 }
 
 :root {
@@ -316,7 +316,7 @@ body {
 
 body {
   font-size: var(--font-size-s);
-  font-family: 'SB Sans Display';
+  font-family: "SB Sans Display";
   font-weight: normal;
   color: var(--black-text);
   overflow-x: hidden;
@@ -488,7 +488,6 @@ textPath {
 /* make larger on hover  */
 .pointer-city:hover {
   stroke-width: 8px;
-  r: 3;
 }
 /* .pointer-city.is-main-pointer:hover {
   stroke-width: 13px!important;
@@ -749,7 +748,7 @@ textPath {
 }
 
 .share-heading__accent::before {
-  content: '\a';
+  content: "\a";
   white-space: pre;
 }
 
