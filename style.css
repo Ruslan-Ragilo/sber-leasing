@@ -829,6 +829,8 @@ textPath {
   align-items: center;
   max-width: 250px;
   gap: 10px;
+
+  transform: scale(1.3);
 }
 
 #manualMap svg {
@@ -841,6 +843,7 @@ textPath {
 
 #manualMap .forMob {
   display: none;
+  transform: scale(1);
 }
 @media screen and (max-height: 450px) {
   #manualMap .forMob {
