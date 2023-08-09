@@ -1,26 +1,3 @@
-import VoronezhFace from "./public/img/popupImg/Voronezh/face.png";
-import VoronezhBG from "./public/img/popupImg/Voronezh/bg.png";
-import RostovFace from "./public/img/popupImg/Rostov-on-Don/face.png";
-import RostovBG from "./public/img/popupImg/Rostov-on-Don/bg.png";
-import SamaraFace from "./public/img/popupImg/Samara/face.png";
-import SamaraBG from "./public/img/popupImg/Samara/bg.png";
-import YekaterinburgFace from "./public/img/popupImg/Yekaterinburg/face.png";
-import YekaterinburgBG from "./public/img/popupImg/Yekaterinburg/bg.png";
-import KhabarovskFace from "./public/img/popupImg/Khabarovsk/face.png";
-import KhabarovskBG from "./public/img/popupImg/Khabarovsk/bg.png";
-import Moscow1Face from "./public/img/popupImg/Moscow1/face.png";
-import Moscow1BG from "./public/img/popupImg/Moscow1/bg.png";
-import Moscow2Face from "./public/img/popupImg/Moscow2/face.png";
-import Moscow2BG from "./public/img/popupImg/Moscow2/bg.png";
-import Saint_PetersburgFace from "./public/img/popupImg/Saint_Petersburg/face.png";
-import Saint_PetersburgBG from "./public/img/popupImg/Saint_Petersburg/bg.png";
-import Nizhny_NovgorodFace from "./public/img/popupImg/Nizhniy_Novgorod/face.png";
-import Nizhny_NovgorodBG from "./public/img/popupImg/Nizhniy_Novgorod/bg.png";
-import IrkutskFace from "./public/img/popupImg/Irkutsk/face.png";
-import IrkutskBG from "./public/img/popupImg/Irkutsk/bg.png";
-import NovosibirskFace from "./public/img/popupImg/Novosibirsk/face.png";
-import NovosibirskBG from "./public/img/popupImg/Novosibirsk/bg.png";
-
 export const DataMap = [
   {
     id: "Vladivostok",
@@ -46,8 +23,8 @@ export const DataMap = [
     autosSpecial: "21,62%",
     buses: "0,63%",
     equipment: "1,82%",
-    faceImg: VoronezhFace,
-    bgImg: VoronezhBG,
+    faceImg: "./img/popupImg/Voronezh/face.png",
+    bgImg: "./img/popupImg/Voronezh/bg.png",
   },
   {
     id: "Rostov-on-Don",
@@ -68,8 +45,8 @@ export const DataMap = [
     autosSpecial: "28,43%",
     buses: "1,24%",
     equipment: "2,57%",
-    faceImg: RostovFace,
-    bgImg: RostovBG,
+    faceImg: "./img/popupImg/Rostov-on-Don/face.png",
+    bgImg: "./img/popupImg/Rostov-on-Don/bg.png",
   },
   {
     id: "Novorossiysk",
@@ -95,8 +72,8 @@ export const DataMap = [
     autosSpecial: "37,48%",
     buses: "0,62%",
     equipment: "2,48%",
-    faceImg: SamaraFace,
-    bgImg: SamaraBG,
+    faceImg: "./img/popupImg/Samara/face.png",
+    bgImg: "./img/popupImg/Samara/bg.png",
   },
   {
     id: "Yekaterinburg",
@@ -117,8 +94,8 @@ export const DataMap = [
     autosSpecial: "26,72%",
     buses: "1,55%",
     equipment: "2,27%",
-    faceImg: YekaterinburgFace,
-    bgImg: YekaterinburgBG,
+    faceImg: "./img/popupImg/Yekaterinburg/face.png",
+    bgImg: "./img/popupImg/Yekaterinburg/bg.png",
   },
   {
     id: "Arkhangelsk",
@@ -297,8 +274,8 @@ export const DataMap = [
     autosSpecial: "22,90%",
     buses: "2,72%",
     equipment: "2,90%",
-    faceImg: KhabarovskFace,
-    bgImg: KhabarovskBG,
+    faceImg: "./img/popupImg/Khabarovsk/face.png",
+    bgImg: "./img/popupImg/Khabarovsk/bg.png",
   },
   {
     id: "Yuzhno-Sakhalinsk",
@@ -468,8 +445,8 @@ export const DataMap = [
     autosSpecial: "14,65%",
     buses: "0,66%",
     equipment: "1,54%",
-    faceImg: Moscow1Face,
-    bgImg: Moscow1BG,
+    faceImg: "./img/popupImg/Moscow1/face.png",
+    bgImg: "./img/popupImg/Moscow1/bg.png",
   },
   {
     id: "Moscow2",
@@ -490,8 +467,8 @@ export const DataMap = [
     autosSpecial: "19,80%",
     buses: "1,07%",
     equipment: "1,68%",
-    faceImg: Moscow2Face,
-    bgImg: Moscow2BG,
+    faceImg: "./img/popupImg/Moscow2/face.png",
+    bgImg: "./img/popupImg/Moscow2/bg.png",
   },
   {
     id: "Saint Petersburg",
@@ -512,8 +489,8 @@ export const DataMap = [
     autosSpecial: "17,86%",
     buses: "1,49%",
     equipment: "1,80%",
-    faceImg: Saint_PetersburgFace,
-    bgImg: Saint_PetersburgBG,
+    faceImg: "./img/popupImg/Saint_Petersburg/face.png",
+    bgImg: "./img/popupImg/Saint_Petersburg/bg.png",
   },
   {
     id: "Nizhny Novgorod",
@@ -534,8 +511,8 @@ export const DataMap = [
     autosSpecial: "24,50%",
     buses: "1,67%",
     equipment: "1,89%",
-    faceImg: Nizhny_NovgorodFace,
-    bgImg: Nizhny_NovgorodBG,
+    faceImg: "./img/popupImg/Nizhniy_Novgorod/face.png",
+    bgImg: "./img/popupImg/Nizhniy_Novgorod/bg.png",
   },
   {
     id: "Irkutsk",
@@ -556,8 +533,8 @@ export const DataMap = [
     autosSpecial: "25,39%",
     buses: "0,60%",
     equipment: "2,23%",
-    faceImg: IrkutskFace,
-    bgImg: IrkutskBG,
+    faceImg: "./img/popupImg/Irkutsk/face.png",
+    bgImg: "./img/popupImg/Irkutsk/bg.png",
   },
   {
     id: "Novosibirsk",
@@ -578,8 +555,8 @@ export const DataMap = [
     autosSpecial: "27,44%",
     buses: "2,04%",
     equipment: "3,38%",
-    faceImg: NovosibirskFace,
-    bgImg: NovosibirskBG,
+    faceImg: "./img/popupImg/Novosibirsk/face.png",
+    bgImg: "./img/popupImg/Novosibirsk/bg.png",
   },
 ];
 
