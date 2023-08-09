@@ -19,7 +19,7 @@
 @font-face {
   font-family: "SB Sans Display";
   font-weight: 200;
-  src: url("/public/fonts/Display/SBSansDisplay-Light.otf");
+  src: url("/fonts/Display/SBSansDisplay-Light.otf");
 }
 
 :root {
@@ -829,29 +829,25 @@ textPath {
   max-width: 250px;
   gap: 10px;
 
+  z-index: 100;
+
   transform: scale(1.3);
 }
 
-#manualMap svg {
-  width: 100px;
-}
-
-#manualMap .forMob svg {
-  width: 60px;
+@media screen and (max-width: 1560px) {
+  #manualMap {
+    max-width: 230px;
+    transform: scale(1.2);
+  }
 }
 
 #manualMap .forMob {
   display: none;
-  transform: scale(1);
 }
-@media screen and (max-height: 450px) {
-  #manualMap .forMob {
-    display: block;
-  }
-  #manualMap .forDesc {
-    display: none;
-  }
+#manualMap.hidden {
+  display: none;
 }
+
 @keyframes arrDown {
   0% {
     transform: translateY(0);
@@ -903,6 +899,16 @@ textPath {
 @media screen and (max-width: 1410px) {
   .header-map {
     overflow-x: scroll;
+  }
+
+  #manualMap .forMob {
+    display: block;
+  }
+  #manualMap .forDesc {
+    display: none;
+  }
+  #manualMap {
+    transform: scale(1);
   }
 
   .header-map::-webkit-scrollbar {

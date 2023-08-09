@@ -244,11 +244,14 @@ const sizes = {
 
 const checkDeviceOrientation = () => {
   const resizeOverlay = document.querySelector(".mob-section");
+  const manualMap = document.getElementById("manualMap");
   if (sizes.aspect < 1 && sizes.width < 780) {
     resizeOverlay.style.display = "flex";
     document.body.style.overflowY = "hidden";
+    manualMap.classList.add("hidden");
     return;
   }
+  manualMap.classList.remove("hidden");
   resizeOverlay.style.display = "none";
   document.body.style.overflowY = "scroll";
 };
