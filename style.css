@@ -443,6 +443,7 @@ textPath {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+  position: relative;
 }
 
 .header-map {
