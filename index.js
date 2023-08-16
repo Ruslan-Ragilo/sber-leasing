@@ -1,16 +1,15 @@
 import { DataMap } from "./constants.js";
 
 const tooltip = document.getElementById("map-city-tooltip");
-const mapRussia = document.querySelector(".map-russia");
+// const isMainCity = document.querySelectorAll('.is-main-pointer');
+// const mapRussia = document.querySelector(".map-russia");
 
 // window.addEventListener("DOMContentLoaded", function () {
-//   if (window.screen.width > 1440) {
-//     mapRussia.setAttribute("width", window.screen.width);
-//     mapRussia.setAttribute("height", window.innerWidth / 1.85);
-//   } else {
-//     mapRussia.setAttribute("width", 1440);
-//     mapRussia.setAttribute("height", 784);
-//   }
+//   isMainCity.forEach(el => {
+//     let createEl = this.document.createElement('div');
+//     createEl.setAttribute('class', 'fake')
+//     el.appendChild(createEl)
+//   })
 // });
 
 const showTooltip = (e, name) => {

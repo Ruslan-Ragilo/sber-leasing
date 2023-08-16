@@ -459,11 +459,22 @@ textPath {
 }
 
 .pointer-city.is-main-pointer {
+  position: relative;
   animation: flickerPonter 1.5s linear infinite;
-  stroke: #00d900;
+  stroke: hsl(120, 100%, 43%);
   box-sizing: border-box;
   cursor: pointer;
 }
+
+.fake {
+  position: absolute;
+  z-index: 1111;
+  top: 0;
+  background-color: red;
+  width: 10px;
+  height: 10px;
+} 
+
 
 @keyframes flickerPonter {
   0% {
@@ -473,10 +484,6 @@ textPath {
   25% {
     stroke-opacity: 0.6;
     stroke-width: 5px;
-  }
-  50% {
-    stroke-opacity: 0.8;
-    stroke-width: 7px;
   }
   75% {
     stroke-opacity: 0.5;
